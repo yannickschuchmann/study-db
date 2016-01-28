@@ -1,0 +1,23 @@
+<h1>Demographische Daten</h1>
+
+
+<%= form_for @participant, url: {action: "create"} do |f| %>
+    <%= f.select(:age, Participant.ages) %>
+    <%= f.label :Altersgruppe %>
+
+    <br>
+
+    <%= f.radio_button :gender, "male" %>
+    <%= f.label :gender_male, "Männlich" %>
+    <%= f.radio_button :gender, "female" %>
+    <%= f.label :gender_female, "Weiblich" %>
+
+    <br>
+
+    <% Participant.web_usages.each do |web_usage| %>
+        <%= f.radio_button :web_usage, web_usage[0] %>
+        <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym %>
+    <% end %>
+
+
+<% end %>
