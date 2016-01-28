@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'participants/new', as: :new_participant
-  get 'participants/create', as: :create_participant
+  post 'participants/create', as: :create_participant
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Job.find_or_create_by(name: "Schüler")
+Job.find_or_create_by(name: "Student")
+Job.find_or_create_by(name: "Renter")
+Job.find_or_create_by(name: "Angesteller")
+Job.find_or_create_by(name: "Selbstständiger")
+Job.find_or_create_by(name: "Sonstiges")

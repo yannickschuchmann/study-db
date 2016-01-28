@@ -1,8 +1,9 @@
 <h1>Demographische Daten</h1>
 
-
 <%= form_for @participant, url: {action: "create"} do |f| %>
-    <%= f.select(:age, Participant.ages) %>
+
+    <h2>Allgemeine Informationen</h2>
+    <%= f.select(:age, Participant.ages.keys) %>
     <%= f.label :Altersgruppe %>
 
     <br>
@@ -13,11 +14,29 @@
     <%= f.label :gender_female, "Weiblich" %>
 
     <br>
-
+    <h2>Wie oft bist du im Web unterwegs?</h2>
     <% Participant.web_usages.each do |web_usage| %>
         <%= f.radio_button :web_usage, web_usage[0] %>
         <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym %>
     <% end %>
+
+    <br>
+    <h2>Was machst du?</h2>
+    <%= f.fields_for :profession, @participant.profession do |profession_f| %>
+        <%= profession_f.collection_select(
+                :job_id, Job.all, :id, :name, {prompt: false}, class: "job") %>
+        <br>
+        <%= text_field :profession, :additional_other, class: "additional additional-other" %>
+        <%= select :profession, :additional_student, ["MCI", "Informatik", "SSE", "Medieninformatik", "Sonstiges"], {},
+                   class: "additional additional-student" %>
+        <%= select :profession, :additional_employee, ["Tätigkeitsbereiche...", "Noch einer..jippie"], {},
+                   class: "additional additional-employee" %>
+
+        <%= profession_f.hidden_field :additional, class: "additional-hidden" %>
+    <% end %>
+    <br>
+    <br>
+    <%= f.submit "weiter" %>
 
 
 <% end %>
