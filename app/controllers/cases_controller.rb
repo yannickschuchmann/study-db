@@ -1,8 +1,11 @@
 class CasesController < ApplicationController
   def handle
 
-    redirect_to completed_path if @current_participant.trackings.length == Case.count and
+    if @current_participant.trackings.length == Case.count and
         @current_participant.trackings.last.try(:completed)
+      redirect_to completed_path
+      return
+    end
 
     tracking = getCurrentTracking
     @case = tracking.case
@@ -41,17 +44,35 @@ class CasesController < ApplicationController
   end
 
   def answered
-
-  end
-
-  def getCurrentTracking
-    tracking = @current_participant.trackings.last
-    if tracking.nil?
-      tracking = @current_participant.trackings.create(case: Case.first)
-    elsif tracking.time.blank? || !tracking.answered
-    else
-      tracking = @current_participant.trackings.create(case: Case.all[@current_participant.trackings.length])
+    tracking = getCurrentTracking
+    answers = params.permit![:answers]
+    answers.each do |answer|
+      answer[:case_id] = tracking.case.id.to_s
+      answer[:participant_id] = @current_participant.id.to_s
     end
-    tracking
+
+    if Answer.create(answers)
+      tracking.answered = true
+      if tracking.save
+        redirect_to handle_case_path
+      else
+        redirect_to answer_case_path, :flash => { :error => "Couldn't update tracking." }
+      end
+    else
+      redirect_to answer_case_path, :flash => { :error => "Couldn't create answers." }
+    end
   end
+
+  private
+
+    def getCurrentTracking
+      tracking = @current_participant.trackings.last
+      if tracking.nil?
+        tracking = @current_participant.trackings.create(case: Case.first)
+      elsif tracking.time.blank? || !tracking.answered
+      else
+        tracking = @current_participant.trackings.create(case: Case.all[@current_participant.trackings.length])
+      end
+      tracking
+    end
 end

@@ -1,7 +1,16 @@
 <h1><%= @case.name %></h1>
 
+<%= form_for "answers", url: answered_case_path do |f| %>
 <% @questionary.questions.each do |question| %>
   <h3><%= question.label %></h3>
   <p><%= question.description %></p>
-  <input type="text">
+  <%
+    answer = question.answers.build
+  %>
+  <%= f.fields_for "[]", answer do |af| %>
+    <%= af.hidden_field :question_id, value: question.id %>
+    <%= af.range_field "value", min: 1, max: 100, step: 5 %>
+  <% end %>
+<% end %>
+<%= submit_tag %>
 <% end %>
