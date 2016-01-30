@@ -6,10 +6,22 @@ class ParticipantsController < ApplicationController
 
   def create
     @participant = Participant.new(participant_params)
-    debugger
+    @participant.token = SecureRandom.hex(32)
+    if @participant.save! && @participant.create_profession(profession_params[:profession_attributes])
+      cookies[:auth_token] = { :value => @participant.token, :expires => Time.now + 2592000} # 30 days
+      redirect_to test_case_path
+    else
+      redirect_to new_participant_path, :flash => { :error => "Couldn't create new participant." }
+    end
   end
 
   def participant_params
-    params.require(:participant).permit(:age, :web_usage, :gender, profession_attributes: [ :job_id, :additional])
+    params.require(:participant).permit(:age, :web_usage, :gender)
   end
+
+  def profession_params
+    params.require(:participant).permit(profession_attributes: [ :job_id, :additional])
+  end
+
+
 end

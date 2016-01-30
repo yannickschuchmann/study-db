@@ -4,6 +4,12 @@ class Participant < ApplicationRecord
   enum web_usage: { "sehr oft": 0, "oft": 1, "manchmal": 2, "selten": 3, "nie": 4 }
 
   has_one :profession, dependent: :destroy
-
   accepts_nested_attributes_for :profession
+
+  has_many :trackings
+  has_many :cases, through: :trackings
+
+  def completed?
+    false
+  end
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  case: 
+  participant: 
+  time: 1
+  case_sheet: 1
+
+two:
+  case: 
+  participant: 
+  time: 1
+  case_sheet: 1
