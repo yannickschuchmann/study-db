@@ -1,2 +1,7 @@
-<h1>Cases#answer</h1>
-<p>Find me in app/views/cases/answer.html.erb</p>
+<h1><%= @case.name %></h1>
+
+<% @questionary.questions.each do |question| %>
+  <h3><%= question.label %></h3>
+  <p><%= question.description %></p>
+  <input type="text">
+<% end %>

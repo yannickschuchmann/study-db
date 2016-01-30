@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1
+  type: 
+  text: MyString
+  question: 
+  participant: 
+  case: 
+
+two:
+  value: 1
+  type: 
+  text: MyString
+  question: 
+  participant: 
+  case: 

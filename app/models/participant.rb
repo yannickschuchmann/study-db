@@ -3,12 +3,13 @@ class Participant < ApplicationRecord
   enum gender: { male: 0, female: 1 }
   enum web_usage: { "sehr oft": 0, "oft": 1, "manchmal": 2, "selten": 3, "nie": 4 }
 
-  has_one :profession, dependent: :destroy
-  accepts_nested_attributes_for :profession
 
+  has_one :profession, dependent: :destroy
   has_many :trackings
   has_many :cases, through: :trackings
+  has_many :answers
 
+  accepts_nested_attributes_for :profession
   def completed?
     false
   end
