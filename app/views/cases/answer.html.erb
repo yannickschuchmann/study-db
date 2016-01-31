@@ -9,7 +9,7 @@
   %>
   <%= f.fields_for "[]", answer do |af| %>
     <%= af.hidden_field :question_id, value: question.id %>
-    <%= af.range_field "value", min: 1, max: 100, step: 5 %>
+    <%= af.range_field "value", min: 0, max: 100, step: 5 %>
   <% end %>
 <% end %>
 <%= submit_tag %>

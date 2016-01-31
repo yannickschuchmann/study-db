@@ -11,6 +11,14 @@ class Participant < ApplicationRecord
 
   accepts_nested_attributes_for :profession
   def completed?
-    false
+    all_completed = true
+    if self.trackings.length < Case.count
+      return false
+    else
+      self.trackings.each do |t|
+        all_completed = false unless t.completed
+      end
+      all_completed
+    end
   end
 end

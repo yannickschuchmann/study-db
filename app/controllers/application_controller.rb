@@ -5,14 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :force_user_to_journey
 
-
   def force_user_to_journey
     @force_user = true
     if cookies[:auth_token] && @current_participant = Participant.find_by_token(cookies[:auth_token])
-      if @force_user && @current_participant.cases.length < Case.count && controller_name != "cases"
+      if @force_user && !@current_participant.completed? && controller_name != "cases"
         redirect_to handle_case_path
       end
-    elsif @force_user && controller_name != "participants"
+    elsif @force_user && controller_name != "participants" && (controller_name != "content" || action_name == "completed")
         redirect_to new_participant_path
     end
   end

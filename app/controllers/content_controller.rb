@@ -3,5 +3,6 @@ class ContentController < ApplicationController
   end
 
   def completed
+    cookies.delete(:auth_token)
   end
 end
