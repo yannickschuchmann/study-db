@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131113649) do
+ActiveRecord::Schema.define(version: 20160131145602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 20160131113649) do
     t.datetime "updated_at",                      null: false
     t.integer  "profession_id"
     t.boolean  "feelings_filled", default: false
+    t.string   "sheet_order"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "case_id"
+    t.boolean  "answered"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["case_id"], name: "index_polls_on_case_id", using: :btree
+    t.index ["participant_id"], name: "index_polls_on_participant_id", using: :btree
   end
 
   create_table "professions", force: :cascade do |t|
@@ -87,9 +98,8 @@ ActiveRecord::Schema.define(version: 20160131113649) do
     t.integer  "participant_id"
     t.integer  "time"
     t.integer  "case_sheet"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "answered",       default: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["case_id"], name: "index_trackings_on_case_id", using: :btree
     t.index ["participant_id"], name: "index_trackings_on_participant_id", using: :btree
   end
@@ -98,6 +108,8 @@ ActiveRecord::Schema.define(version: 20160131113649) do
   add_foreign_key "answers", "participants"
   add_foreign_key "answers", "questions"
   add_foreign_key "cases", "questionaries"
+  add_foreign_key "polls", "cases"
+  add_foreign_key "polls", "participants"
   add_foreign_key "professions", "jobs"
   add_foreign_key "professions", "participants"
   add_foreign_key "questions", "questionaries"

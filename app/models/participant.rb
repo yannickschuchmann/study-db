@@ -8,21 +8,14 @@ class Participant < ApplicationRecord
   has_many :trackings
   has_many :cases, through: :trackings
   has_many :answers
+  has_many :polls
 
   accepts_nested_attributes_for :profession
-  def trackings_completed?
-    all_completed = true
-    if self.trackings.length < Case.count
-      return false
-    else
-      self.trackings.each do |t|
-        all_completed = false unless t.completed
-      end
-      all_completed
-    end
+  def cases_completed?
+    self.polls.length == Case.count
   end
 
   def completed?
-    self.trackings_completed? and self.feelings_filled
+    self.cases_completed? and self.feelings_filled
   end
 end
