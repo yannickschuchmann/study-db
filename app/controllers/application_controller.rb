@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
   def force_user_to_journey
     @force_user = true
     if cookies[:auth_token] && @current_participant = Participant.find_by_token(cookies[:auth_token])
-      if @force_user && !@current_participant.completed? && controller_name != "cases"
+      if @force_user && !@current_participant.trackings_completed? && controller_name != "cases"
         redirect_to handle_case_path
+      elsif @current_participant.trackings_completed? && !@current_participant.feelings_filled and
+          (controller_name != "participants" || (action_name != "feelings" && action_name != "create_feelings"))
+        redirect_to feelings_participant_path
       end
     elsif @force_user && controller_name != "participants" && (controller_name != "content" || action_name == "completed")
         redirect_to new_participant_path

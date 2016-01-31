@@ -1,0 +1,21 @@
+<h1><%= @questionary.name %></h1>
+
+
+<%= form_for "answers", url: create_feelings_participant_path do |f| %>
+    <% @questionary.questions.each_with_index do |question, index| %>
+        <% labels = question.label.split("|")
+           answer = question.answers.build
+        %>
+        <div>
+          <label><%= labels[0] %></label>
+          <%= f.fields_for index.to_s+"[]", answer do |af| %>
+              <%= af.hidden_field :question_id, value: question.id %>
+              <% (0..6).each do |i| %>
+                <%= af.radio_button "value", i %>
+              <% end %>
+          <% end %>
+          <label><%= labels[1] %></label>
+        </div>
+    <% end %>
+    <%= submit_tag %>
+<% end %>

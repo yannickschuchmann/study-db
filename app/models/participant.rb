@@ -10,7 +10,7 @@ class Participant < ApplicationRecord
   has_many :answers
 
   accepts_nested_attributes_for :profession
-  def completed?
+  def trackings_completed?
     all_completed = true
     if self.trackings.length < Case.count
       return false
@@ -20,5 +20,9 @@ class Participant < ApplicationRecord
       end
       all_completed
     end
+  end
+
+  def completed?
+    self.trackings_completed? and self.feelings_filled
   end
 end

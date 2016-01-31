@@ -1,9 +1,8 @@
 class CasesController < ApplicationController
   def handle
 
-    if @current_participant.trackings.length == Case.count and
-        @current_participant.trackings.last.try(:completed)
-      redirect_to completed_path
+    if @current_participant.trackings_completed?
+      redirect_to feelings_participant_path
       return
     end
 
