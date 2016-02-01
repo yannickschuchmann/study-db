@@ -17,30 +17,6 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  def feelings
-    @questionary = Questionary.find_by_name("attrakdiff")
-  end
-
-  def create_feelings
-    answerData = params.permit![:answers]
-    answers = []
-    answerData.each do |a|
-      answerData[a][:participant_id] = @current_participant.id
-      answers << answerData[a]
-    end
-
-    if Answer.create(answers)
-      @current_participant.feelings_filled = true
-      if @current_participant.save
-        redirect_to completed_path
-      else
-        redirect_to feelings_participant_path, :flash => {:error => "Couldn't update participant."}
-      end
-    else
-      redirect_to feelings_participant_path, :flash => {:error => "Couldn't create answers."}
-    end
-  end
-
   def participant_params
     params.require(:participant).permit(:age, :web_usage, :gender)
   end

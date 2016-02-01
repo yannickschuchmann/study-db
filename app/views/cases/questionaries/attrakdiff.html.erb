@@ -1,7 +1,7 @@
 <h1><%= @questionary.name %></h1>
 
 
-<%= form_for "answers", url: create_feelings_participant_path do |f| %>
+<%= form_for "answers", url: answered_case_path do |f| %>
     <% @questionary.questions.each_with_index do |question, index| %>
         <% labels = question.label.split("|")
            answer = question.answers.build

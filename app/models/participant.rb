@@ -6,16 +6,23 @@ class Participant < ApplicationRecord
 
   has_one :profession, dependent: :destroy
   has_many :trackings
-  has_many :cases, through: :trackings
+  has_many :cases,  -> { uniq },through: :trackings
   has_many :answers
   has_many :polls
 
   accepts_nested_attributes_for :profession
+
   def cases_completed?
-    self.polls.length == Case.count
+    if self.cases.count == Case.count
+      all_completed = true
+      self.cases.each {|c| all_completed = false unless c.completed?(self)}
+      return all_completed
+    else
+      return false
+    end
   end
 
   def completed?
-    self.cases_completed? and self.feelings_filled
+    self.cases_completed?
   end
 end

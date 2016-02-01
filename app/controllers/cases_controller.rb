@@ -6,8 +6,8 @@ class CasesController < ApplicationController
 
   def handle
 
-    if @current_participant.cases_completed?
-      redirect_to feelings_participant_path
+    if @current_participant.completed?
+      redirect_to completed_path
       return
     end
 
@@ -44,18 +44,31 @@ class CasesController < ApplicationController
   end
 
   def answer
-    @questionary = @case.questionary
+    set_current_questionary
+    render "cases/questionaries/" + @questionary.name
   end
 
   def answered
-    answers = params.permit![:answers]
-    answers.each do |answer|
-      answer[:case_id] = @case.id.to_s
-      answer[:participant_id] = @current_participant.id.to_s
+    set_current_questionary
+    answers = []
+    answerData = params.permit![:answers]
+
+    if @questionary.name == "nasatlx"
+      answerData.each do |answer|
+        answer[:case_id] = @case.id.to_s
+        answer[:participant_id] = @current_participant.id.to_s
+        answers << answer
+      end
+    else
+      answerData.each do |a|
+        answerData[a][:participant_id] = @current_participant.id
+        answers << answerData[a]
+      end
     end
 
     if Answer.create(answers) and Poll.create(participant: @current_participant,
                                               case: @case,
+                                              questionary: @questionary,
                                               answered: true)
       redirect_to handle_case_path
     else
@@ -66,7 +79,7 @@ class CasesController < ApplicationController
   private
 
     def set_current_case
-      cases_count = @current_participant.cases.group(:id).length
+      cases_count = @current_participant.cases.length
       if cases_count == 0
         @case = Case.first
         return
@@ -74,11 +87,20 @@ class CasesController < ApplicationController
 
       last_case = @current_participant.trackings.last.case
 
-      if (last_case.trackings.where(participant: @current_participant).count == Case.sheets and
-          Poll.where(participant: @current_participant, case: last_case, answered: true).count > 0)
+      if (last_case.completed? @current_participant)
         @case = Case.all[cases_count] # next case
       else
         @case = last_case
+      end
+    end
+
+    def set_current_questionary
+      polls_count = @case.polls.where(participant: @current_participant).count
+
+      if polls_count == 0
+        @questionary = Questionary.find_by_name("nasatlx")
+      elsif polls_count == 1
+        @questionary = Questionary.find_by_name("attrakdiff")
       end
     end
 end

@@ -13,10 +13,12 @@ Job.find_or_create_by(name: "Angesteller")
 Job.find_or_create_by(name: "Selbstständiger")
 Job.find_or_create_by(name: "Sonstiges")
 
+Case.find_or_create_by(name: "Dropdown")
+Case.find_or_create_by(name: "Mega Menu")
+Case.find_or_create_by(name: "Dropdown mit Mega Menu")
+
 q1 = Questionary.find_or_create_by(name: "nasatlx")
-Case.find_or_create_by(name: "Dropdown", questionary: q1)
-Case.find_or_create_by(name: "Mega Menu", questionary: q1)
-Case.find_or_create_by(name: "Dropdown mit Mega Menu", questionary: q1)
+q2 = Questionary.find_or_create_by(name: "attrakdiff", description: 'Nachfolgend finden Sie Wortpaare, mit deren Hilfe Sie die Beurteilung vornehmen können. Sie stellen jeweils extreme Gegensätze dar, zwischen denen eine Abstufung möglich ist.Diese Bewertung bedeutet, dass das Produkt eher sympathisch, aber noch verbesserungsbedürftig ist.Denken Sie nicht lange über die Wortpaare nach, sondern geben Sie bitte die Einschätzung ab, die Ihnen spontan in den Sinn kommt. Vielleicht passen einige Wortpaare nicht so gut auf das Produkt, kreuzen Sie aber trotzdem bitte immer eine Antwort an. Denken Sie daran, dass es keine "richtigen" oder "falschen" Antworten gibt - nur Ihre persönliche Meinung zählt!')
 
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Geistige Anforderung", description: "Wie viel geistige Anforderung war bei der Informationsaufnahme und bei der Informationsverarbeitung erforderlich (z.B. Denken, Entscheiden, Rechnen, Erinnern, Hinsehen, Suchen ...)? War die Aufgabe leicht oder anspruchsvoll, einfach oder komplex, erfordert sie hohe Genauigkeit oder ist sie fehlertolerant?")
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Körperliche Anforderung", description: "Wie viel körperliche Aktivität war erforderlich (z.B. ziehen, drücken, drehen, steuern, aktivieren ...)? War die Aufgabe leicht oder schwer, einfach oder anstrengend, erholsam oder mühselig?")
@@ -25,7 +27,6 @@ Question.find_or_create_by(questionary: q1, kind: "value", label: "Leistung", de
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Anstrengung", description: "Wie hart mussten Sie arbeiten, um Ihren Grad an Aufgabenerfüllung zu erreichen?")
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Frustration", description: "Wie unsicher, entmutigt, irritiert, gestresst und verärgert (versus sicher, bestätigt, zufrieden, entspannt und zufrieden mit sich selbst) fühlten Sie sich während der Aufgabe?")
 
-q2 = Questionary.find_or_create_by(name: "attrakdiff", description: 'Nachfolgend finden Sie Wortpaare, mit deren Hilfe Sie die Beurteilung vornehmen können. Sie stellen jeweils extreme Gegensätze dar, zwischen denen eine Abstufung möglich ist.Diese Bewertung bedeutet, dass das Produkt eher sympathisch, aber noch verbesserungsbedürftig ist.Denken Sie nicht lange über die Wortpaare nach, sondern geben Sie bitte die Einschätzung ab, die Ihnen spontan in den Sinn kommt. Vielleicht passen einige Wortpaare nicht so gut auf das Produkt, kreuzen Sie aber trotzdem bitte immer eine Antwort an. Denken Sie daran, dass es keine "richtigen" oder "falschen" Antworten gibt - nur Ihre persönliche Meinung zählt!')
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "menschlich|technisch")
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "isolierend|verbindend")
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "angenehm|unangenehm")
