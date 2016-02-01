@@ -1,0 +1,62 @@
+$dark-grey: #33515b;
+$light-grey: #d6dcde;
+$red: #e2001a;
+body {
+	color: $dark-grey;
+}
+a {
+	color: $light-grey;
+}
+
+h4 {
+	border-top: 1px solid $light-grey;
+	padding-top: 20px;
+	&:first-of-type{
+		border-top: none;
+	}
+}
+
+p {
+	line-height: 30px;
+}
+.btn {
+	background: $light-grey;
+}
+
+form {
+	label {
+		font-weight: normal;
+	}
+
+	.form-control {
+		padding: 0 2px;
+		height: 30px;
+		width: 150px!important;
+	}
+
+	.sibbling {
+		padding-top: 10px;
+	}
+}
+header {
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid $light-grey;
+	.row {
+		position: relative;
+	}
+	.hci-logo {
+  		width: 8%;
+  		float: right;
+	}
+
+	.title {
+		position:absolute;
+		right: 117px;
+		top: 48px;
+		font-size: 21px;
+	}
+}
+
+
+

@@ -1,42 +1,53 @@
 <h1>Demographische Daten</h1>
 
-<%= form_for @participant, url: {action: "create"} do |f| %>
+<%= form_for @participant, url: {action: "create"}, :html => {class: "form-inline"} do |f| %>
 
-    <h2>Allgemeine Informationen</h2>
-    <%= f.select(:age, Participant.ages.keys) %>
-    <%= f.label :Altersgruppe %>
-
-    <br>
-
-    <%= f.radio_button :gender, "male" %>
-    <%= f.label :gender_male, "Männlich" %>
-    <%= f.radio_button :gender, "female" %>
-    <%= f.label :gender_female, "Weiblich" %>
+    <h4>1. Allgemeine Informationen</h4>
+    <div class="form-group">
+        <%= f.label :Altersgruppe %>
+        <%= f.select(:age, Participant.ages.keys, {}, class: "form-control") %>
+    </div>
 
     <br>
-    <h2>Wie oft bist du im Web unterwegs?</h2>
-    <% Participant.web_usages.each do |web_usage| %>
-        <%= f.radio_button :web_usage, web_usage[0] %>
-        <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym %>
-    <% end %>
+    <div class="form-group sibbling">
+        <%= f.label :gender_male, class: "radio-inline" do %>
+            <%= f.radio_button :gender, "male" %>Männlich
+        <% end %>
+        <%= f.label :gender_female, class: "radio-inline" do %>
+            <%= f.radio_button :gender, "female" %>Weiblich
+        <% end %>
+    </div>
 
     <br>
-    <h2>Was machst du?</h2>
-    <%= f.fields_for :profession, @participant.profession do |profession_f| %>
-        <%= profession_f.collection_select(
-                :job_id, Job.all, :id, :name, {prompt: false}, class: "job") %>
-        <br>
-        <%= text_field :profession, :additional_other, class: "additional additional-other" %>
-        <%= select :profession, :additional_student, ["MCI", "Informatik", "SSE", "Medieninformatik", "Sonstiges"], {},
-                   class: "additional additional-student" %>
-        <%= select :profession, :additional_employee, ["Tätigkeitsbereiche...", "Noch einer..jippie"], {},
-                   class: "additional additional-employee" %>
+    <h4>2. Wie oft bist du im Web unterwegs?</h4>
 
-        <%= profession_f.hidden_field :additional, class: "additional-hidden" %>
-    <% end %>
+    <div class="form-group">
+        <% Participant.web_usages.each do |web_usage| %>
+            <%= f.radio_button :web_usage, web_usage[0] %>
+            <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym %>
+        <% end %>
+    </div>
+
+    <br>
+    <h4>3. Was machst du?</h4>
+
+    <div class="form-group">
+        <%= f.fields_for :profession, @participant.profession do |profession_f| %>
+            <%= profession_f.collection_select(
+                    :job_id, Job.all, :id, :name, {prompt: false}, class: "job form-control") %>
+            <br>
+            <%= text_field :profession, :additional_other, class: "additional additional-other form-control" %>
+            <%= select :profession, :additional_student, ["MCI", "Informatik", "SSE", "Medieninformatik", "Sonstiges"], {},
+                       class: "additional additional-student form-control" %>
+            <%= select :profession, :additional_employee, ["Tätigkeitsbereiche...", "Noch einer..jippie"], {},
+                       class: "additional additional-employee form-control" %>
+
+            <%= profession_f.hidden_field :additional, class: "additional-hidden" %>
+        <% end %>
+    </div>
     <br>
     <br>
-    <%= f.submit "weiter" %>
+    <%= f.submit "weiter", class: "btn betn-default" %>
 
 
 <% end %>

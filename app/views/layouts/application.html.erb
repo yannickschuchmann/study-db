@@ -10,7 +10,22 @@
   </head>
 
   <body>
-    <p class="error flash"><%= flash[:error] %></p>
-    <%= yield %>
+    <header>
+      <div class="container">
+        <div class="row">
+          <%= image_tag("uhh-logo.gif") %>
+          <% unless controller_name == "content" and action_name == "intro" %>
+            <p class="title">Navigation im Web</p>
+          <% end %>
+          <%= image_tag("hci-logo.png", class:"hci-logo") %>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <p class="error flash"><%= flash[:error] %></p>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
