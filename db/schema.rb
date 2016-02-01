@@ -47,9 +47,8 @@ ActiveRecord::Schema.define(version: 20160201105916) do
     t.integer  "gender"
     t.integer  "web_usage"
     t.string   "token"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "profession_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "sheet_order"
   end
 
