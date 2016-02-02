@@ -10,6 +10,7 @@
 
     <br>
     <div class="form-group sibbling">
+        <span>Geschlecht: </span>
         <%= f.label :gender_male, class: "radio-inline" do %>
             <%= f.radio_button :gender, "male" %>Männlich
         <% end %>
@@ -19,7 +20,7 @@
     </div>
 
     <br>
-    <h4>2. Wie oft bist du im Web unterwegs?</h4>
+    <h4>2. Wie oft bist Du im Web unterwegs?</h4>
 
     <div class="form-group">
         <% Participant.web_usages.each do |web_usage| %>
@@ -29,7 +30,7 @@
     </div>
 
     <br>
-    <h4>3. Was machst du?</h4>
+    <h4>3. Tätigkeitsfeld</h4>
 
     <div class="form-group">
         <%= f.fields_for :profession, @participant.profession do |profession_f| %>

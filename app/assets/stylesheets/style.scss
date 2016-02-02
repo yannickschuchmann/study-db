@@ -1,16 +1,25 @@
 $dark-grey: #33515b;
-$light-grey: #d6dcde;
+$grey: #d6dcde;
+$light-grey: #eaedee;
 $red: #e2001a;
+
 body {
 	color: $dark-grey;
 }
 a {
-	color: $light-grey;
+	color: $grey;
+}
+
+h1 {
+	border-bottom: 1px solid $grey;
+	padding-bottom: 7px;
+	margin-bottom: 20px;
 }
 
 h4 {
-	border-top: 1px solid $light-grey;
+	border-top: 1px solid $grey;
 	padding-top: 20px;
+	padding-bottom: 5px;
 	&:first-of-type{
 		border-top: none;
 	}
@@ -20,7 +29,35 @@ p {
 	line-height: 30px;
 }
 .btn {
+	background: $grey;
+}
+
+.glyphicon-pencil {
+	font-size: 32px;
+	color: $dark-grey;
+}
+
+.alert-info {
 	background: $light-grey;
+	border: none;
+}
+
+.nasa-question {
+	height: 135px;
+	border-bottom: 1px solid $grey;
+}
+
+.regulator {
+	margin-top: 50px;
+	height: 85px;
+	border-bottom: 1px solid $grey;
+	span {
+		font-weight: bold;
+		&:last-child {
+			float:right;
+			margin-top: -40px;
+		}
+	}
 }
 
 form {
@@ -31,17 +68,42 @@ form {
 	.form-control {
 		padding: 0 2px;
 		height: 30px;
-		width: 150px!important;
 	}
 
 	.sibbling {
 		padding-top: 10px;
 	}
+
+	.job {
+		margin-bottom: 10px;
+		width: 300px!important;
+	}
+	.additional {
+		width: 300px!important;
+	}
+
+	.attrakdiff-row {
+		margin: 5px 0;
+		border-bottom: 1px solid $grey;
+		&:last-of-type {
+			border-bottom: none;
+		}
+		label {
+			font-weight: bold;
+			text-align: center;
+		}
+		.text-align {
+			text-align: right,
+		}
+		input {
+			margin: 0 15px;
+		}
+	}
 }
 header {
 	margin-top: 20px;
 	padding-bottom: 20px;
-	border-bottom: 1px solid $light-grey;
+	border-bottom: 1px solid $grey;
 	.row {
 		position: relative;
 	}

@@ -1,16 +1,26 @@
 <h1><%= @case.name %></h1>
+<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Schiebe den Regler an den Punkt, der deine Erfahrung in Hinblick auf die Aufgabe am besten verdeutlicht. </div>
 
+
+	
 <%= form_for "answers", url: answered_case_path do |f| %>
 <% @questionary.questions.each do |question| %>
-  <h3><%= question.label %></h3>
-  <p><%= question.description %></p>
-  <%
-    answer = question.answers.build
-  %>
-  <%= f.fields_for "[]", answer do |af| %>
-    <%= af.hidden_field :question_id, value: question.id %>
-    <%= af.range_field "value", min: 0, max: 100, step: 5 %>
-  <% end %>
+<div class="row">
+	<div class="col-md-6 nasa-question">
+  		<h4><%= question.label %></h4>
+		<p><%= question.description %></p>
+	</div>
+	<div class="col-md-6 regulator">
+	  <%
+	    answer = question.answers.build
+	  %>
+	  <%= f.fields_for "[]", answer do |af| %>
+	    <%= af.hidden_field :question_id, value: question.id %>
+	    <span><%= question.label == "Leistung" ? "Gut" : "Gering" %></span><%= af.range_field "value", min: 0, max: 100, step: 5 %>
+	    <span><%= question.label == "Leistung" ? "Schlecht" : "Hoch" %></span>
+	  <% end %>
+	</div>
+</div>
 <% end %>
 <%= submit_tag %>
 <% end %>
