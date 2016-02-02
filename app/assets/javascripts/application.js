@@ -16,3 +16,11 @@
 //= require bootstrap.min
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+	if ($('.test-dropdown').length > 0) {
+		window.calculateDropdown();
+	} else if ($('.test-mega').length > 0) {
+		window.calculateMega();
+	}
+});
