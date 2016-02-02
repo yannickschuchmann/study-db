@@ -4,7 +4,7 @@ ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '>= 5.0.0.beta1.1', '< 5.1'
-gem 'rails', github: "rails/rails" # because of heroku issues. maybe solved in beta2
+gem 'rails', github: "rails/rails", ref: "dbf67b3a6f549769c5f581b70bc0c0d880d5d5d1" # because of heroku issues. maybe solved in beta2
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Uglifier as compressor for JavaScript assets
