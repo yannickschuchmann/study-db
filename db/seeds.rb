@@ -9,13 +9,12 @@
 Job.find_or_create_by(name: "Schüler")
 Job.find_or_create_by(name: "Student")
 Job.find_or_create_by(name: "Renter")
-Job.find_or_create_by(name: "Angesteller")
-Job.find_or_create_by(name: "Selbstständiger")
+Job.find_or_create_by(name: "Berufstätiger")
 Job.find_or_create_by(name: "Sonstiges")
 
-Case.find_or_create_by(name: "Dropdown")
+Case.find_or_create_by(name: "Mega Dropdown")
 Case.find_or_create_by(name: "Mega Menu")
-Case.find_or_create_by(name: "Dropdown mit Mega Menu")
+Case.find_or_create_by(name: "Dynamic Mega Menu")
 
 q1 = Questionary.find_or_create_by(name: "nasatlx")
 q2 = Questionary.find_or_create_by(name: "attrakdiff", description: 'Nachfolgend findest Du Wortpaare, mit deren Hilfe Du die Beurteilung vornehmen kannst. Sie stellen jeweils extreme Gegensätze dar, zwischen denen eine Abstufung möglich ist. Diese Bewertung bedeutet, dass das Produkt eher sympathisch, aber noch verbesserungsbedürftig ist.Denken Sie nicht lange über die Wortpaare nach, sondern geben Sie bitte die Einschätzung ab, die Ihnen spontan in den Sinn kommt. Vielleicht passen einige Wortpaare nicht so gut auf das Produkt, kreuzen Sie aber trotzdem bitte immer eine Antwort an. Denken Sie daran, dass es keine "richtigen" oder "falschen" Antworten gibt - nur Ihre persönliche Meinung zählt!')

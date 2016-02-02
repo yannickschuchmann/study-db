@@ -36,7 +36,7 @@ $(function() {
     var $el;
     if (activeOption == "Student") {
       $el = $additionalStudent;
-    } else if (activeOption == "Angesteller") {
+    } else if (activeOption == "Berufstätiger") {
       $el = $additionalEmployee;
     } else if (activeOption == "Sonstiges") {
       $el = $additionalOther;

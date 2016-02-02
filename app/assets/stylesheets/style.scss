@@ -2,7 +2,7 @@ body {
 	color: $dark-grey;
 }
 a {
-	color: $grey;
+	color: $blue;
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
 
 h4 {
 	border-top: 1px solid $grey;
-	padding-top: 20px;
+	padding-top: 14px;
 	padding-bottom: 5px;
 	&:first-of-type{
 		border-top: none;
@@ -25,10 +25,21 @@ p {
 	line-height: 30px;
 }
 .btn {
-	background: $grey;
+	background: transparent;
+	color: $blue;
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid $dark-grey;
+	min-width: 130px;
+
+	&:hover {
+		color: $dark-grey;
+		background: transparent;
+	}
 }
 
-.glyphicon-pencil {
+.fa-pencil {
 	font-size: 32px;
 	color: $dark-grey;
 	margin-right: 10px;
@@ -36,26 +47,63 @@ p {
 
 .alert-info {
 	background: $light-grey;
+	color: $dark-grey;
 	border: none;
 	display: flex;
 	align-items: center;
+	font-size: 18px;
+	line-height: 52px;
+
+	.startname, .helpingname, .goalname {
+		color: $red;
+	}
 }
 
-.nasa-question {
-	height: 135px;
-	border-bottom: 1px solid $grey;
+.attr-form {
+	margin-top: 35px;
 }
 
-.regulator {
-	margin-top: 55px;
-	height: 80px;
+.nasa {
 	border-bottom: 1px solid $grey;
-	span {
-		font-weight: bold;
-		&:last-child {
-			float:right;
-			margin-top: -27px;
+	&:last-of-type {
+		border: none;
+	}
+
+	.nasa-question {
+		height: 135px;
+	}
+
+	.regulator {
+		margin-top: 49px;
+		height: 80px;
+		span {
+			font-weight: bold;
+			&:last-child {
+				float:right;
+				margin-top: -27px;
+			}
 		}
+	}
+}
+
+header {
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid $grey;
+	.row {
+		position: relative;
+	}
+	.hci-logo {
+		width: 8%;
+		float: right;
+	}
+
+	.title {
+		position:absolute;
+		right: 117px;
+		top: 48px;
+		font-size: 21px;
+		font-weight: bold;
 	}
 }
 
@@ -82,7 +130,7 @@ form {
 	}
 
 	.attrakdiff-row {
-		margin: 5px 0;
+		margin: 8px 0;
 		border-bottom: 1px solid $grey;
 		&:last-of-type {
 			border-bottom: none;
@@ -99,25 +147,9 @@ form {
 		}
 	}
 }
-header {
-	margin-top: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid $grey;
-	.row {
-		position: relative;
-	}
-	.hci-logo {
-		width: 8%;
-		float: right;
-	}
 
-	.title {
-		position:absolute;
-		right: 117px;
-		top: 48px;
-		font-size: 21px;
-		font-weight: bold;
-	}
+.completed {
+	font-size: 18px;
 }
 
 
