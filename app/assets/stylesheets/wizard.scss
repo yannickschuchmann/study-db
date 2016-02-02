@@ -1,5 +1,17 @@
+h1 > .wizard {
+	margin-left: auto;
+}
+
 .wizard {
-  li.active, li.completed {
-    font-weight: bold;
-  }
+	display: flex;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	li {
+
+	}
+
+	li.active, li.completed {
+		font-weight: bold;
+	}
 }
