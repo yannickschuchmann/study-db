@@ -4,7 +4,7 @@
 
     <h4>1. Allgemeine Informationen</h4>
     <div class="form-group">
-        <%= f.label :Altersgruppe %>
+        <%= f.label "Altersgruppe:" %>
         <%= f.select(:age, Participant.ages.keys, {}, class: "form-control") %>
     </div>
 
@@ -24,8 +24,9 @@
 
     <div class="form-group">
         <% Participant.web_usages.each do |web_usage| %>
-            <%= f.radio_button :web_usage, web_usage[0] %>
-            <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym %>
+            <%= f.label "web_usage_" + web_usage[0].gsub(/ /, "_"), web_usage[0].to_sym, class: "radio-inline" do %>
+            <%= f.radio_button :web_usage, web_usage[0] %> <%= web_usage[0] %>
+            <% end %>
         <% end %>
     </div>
 
