@@ -14,6 +14,8 @@ Todo:
 * Multi-language, currently only german
 * layouting and stylings
 * process wizard
+* Google Analytics integration
+* validations
 
 ## Setup
 

@@ -1,0 +1,6 @@
+<ul class="wizard">
+  <%= wizard_step_tag 1 %>
+  <% (2..Case.count + 1).each do |i| %>
+  <%= wizard_step_tag i %>
+  <% end %>
+</ul>

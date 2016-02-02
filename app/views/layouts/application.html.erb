@@ -24,6 +24,8 @@
     <div class="container">
       <div class="row">
         <p class="error flash"><%= flash[:error] %></p>
+        <%= render "layouts/wizard" unless action_name == "test" %>
+
         <%= yield %>
       </div>
     </div>
