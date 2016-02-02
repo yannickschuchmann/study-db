@@ -12,6 +12,7 @@ Todo:
 * Instructions page
 * Multi-language, currently only german
 * layouting and stylings
+* process wizard
 
 ## Setup
 
