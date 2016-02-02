@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   def force_user_to_journey
     @force_user = true
+
+    return if controller_name == "content" && action_name == "instructions"
+
     if cookies[:auth_token] && @current_participant = Participant.find_by_token(cookies[:auth_token])
       if @force_user && !@current_participant.completed? && controller_name != "cases"
         redirect_to handle_case_path

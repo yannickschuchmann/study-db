@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post 'participants/create', as: :create_participant
 
   root 'content#intro'
+  get 'instructions' => 'content#instructions'
 end
