@@ -1,5 +1,8 @@
+@import "colors";
+
 h1 > .wizard {
 	margin-left: auto;
+	align-self: center;
 }
 
 .wizard {
@@ -7,11 +10,45 @@ h1 > .wizard {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	$size: 30px;
+	$border-size: 2px;
 	li {
-
-	}
-
-	li.active, li.completed {
-		font-weight: bold;
+		text-align: center;
+		line-height: $size - 2 * $border-size;
+		font-size: 16px;
+		width: $size;
+		height: $size;
+		border-radius: 50%;
+		border: $border-size solid $dark-grey;
+		color: $dark-grey;
+		background: transparent;
+		position: relative;
+		margin-left: $size;
+		&.completed, &.active {
+			border-color: transparent;
+			color: $light-grey;
+			&:before {
+				background: $dark-grey;
+			}
+		}
+		&.completed {
+			background: $dark-grey;
+		}
+		&.active {
+			background: $red;
+		}
+		&:before {
+			content: "";
+			position: absolute;
+			right: $size - $border-size;
+			top: 50%;
+			height: 2px;
+			width: $size;
+			transform: translateY(-50%);
+			background: $light-grey;
+		}
+		&:first-child:before {
+			content: none;
+		}
 	}
 }

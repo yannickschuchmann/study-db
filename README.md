@@ -3,17 +3,17 @@
 Study-db provides a way to easily create an online study for comparing different 
 html navigation models (cases). 
 
-Current features:
+### Current features:
 * ~~Collect demographic data of participants~~
 * ~~Track how long it takes for a participant to complete one test.~~
 * ~~Add polls after each navigation model, currently [NASA TLX](https://en.wikipedia.org/wiki/NASA-TLX), [attrakdiff](http://attrakdiff.de/)~~
 * ~~Instructions page~~
+* ~~process wizard~~
 
-Todo:
+### Todo:
 
 * Multi-language, currently only german
 * layouting and stylings
-* process wizard
 * Google Analytics integration
 * validations
 
