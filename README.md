@@ -7,9 +7,10 @@ Current features:
 * ~~Collect demographic data of participants~~
 * ~~Track how long it takes for a participant to complete one test.~~
 * ~~Add polls after each navigation model, currently [NASA TLX](https://en.wikipedia.org/wiki/NASA-TLX), [attrakdiff](http://attrakdiff.de/)~~
+* ~~Instructions page~~
 
 Todo:
-* Instructions page
+
 * Multi-language, currently only german
 * layouting and stylings
 * process wizard
