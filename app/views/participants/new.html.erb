@@ -1,4 +1,7 @@
-<h1>Demographische Daten</h1>
+<h1>
+  Demographische Daten
+  <%= render "layouts/wizard" %>
+</h1>
 
 <%= form_for @participant, url: {action: "create"}, :html => {class: "form-inline"} do |f| %>
 

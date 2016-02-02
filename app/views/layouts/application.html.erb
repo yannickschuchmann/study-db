@@ -4,7 +4,7 @@
     <title>Studydb</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
@@ -27,7 +27,6 @@
       <div class="row">
         <div class="col-md-12">
           <p class="error flash"><%= flash[:error] %></p>
-          <%= render "layouts/wizard" unless action_name == "test" %>
           <%= yield %>
         </div>
       </div>
