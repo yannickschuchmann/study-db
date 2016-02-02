@@ -30,11 +30,14 @@ p {
 .glyphicon-pencil {
 	font-size: 32px;
 	color: $dark-grey;
+	margin-right: 10px;
 }
 
 .alert-info {
 	background: $light-grey;
 	border: none;
+	display: flex;
+	align-items: center;
 }
 
 .nasa-question {
@@ -43,14 +46,14 @@ p {
 }
 
 .regulator {
-	margin-top: 50px;
-	height: 85px;
+	margin-top: 55px;
+	height: 80px;
 	border-bottom: 1px solid $grey;
 	span {
 		font-weight: bold;
 		&:last-child {
 			float:right;
-			margin-top: -40px;
+			margin-top: -27px;
 		}
 	}
 }
@@ -112,6 +115,7 @@ header {
 		right: 117px;
 		top: 48px;
 		font-size: 21px;
+		font-weight: bold;
 	}
 }
 

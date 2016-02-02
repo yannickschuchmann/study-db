@@ -64,7 +64,6 @@ input[type=range]:focus::-moz-range-track {
 /*** IE 10 ****/
 
 input[type=range]::-ms-track {
-    width: 300px;
     height: 5px;
     
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -91,10 +90,4 @@ input[type=range]::-ms-thumb {
     width: 16px;
     border-radius: 50%;
     background: $dark-grey;
-}
-input[type=range]:focus::-ms-fill-lower {
-    background: #888;
-}
-input[type=range]:focus::-ms-fill-upper {
-    background: $grey;
 }
