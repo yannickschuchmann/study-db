@@ -4,6 +4,15 @@
 </h1>
 
 <%= form_for @participant, url: {action: "create"}, :html => {class: "form-inline"} do |f| %>
+    <% if @participant.errors.any? %>
+    <div class="errors">
+      <ul>
+      <% @participant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
 
     <h4>1. Allgemeine Informationen</h4>
     <div class="form-group">
@@ -46,7 +55,6 @@
                        class: "additional additional-student form-control" %>
             <%= select :profession, :additional_employee, ["Tätigkeitsbereiche...", "Noch einer..jippie"], {},
                        class: "additional additional-employee form-control" %>
-
             <%= profession_f.hidden_field :additional, class: "additional-hidden" %>
         <% end %>
     </div>

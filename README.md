@@ -9,12 +9,12 @@ html navigation models (cases).
 * ~~Add polls after each navigation model, currently [NASA TLX](https://en.wikipedia.org/wiki/NASA-TLX), [attrakdiff](http://attrakdiff.de/)~~
 * ~~Instructions page~~
 * ~~process wizard~~
+* ~~Google Analytics integration~~
 
 ### Todo:
 
 * Multi-language, currently only german
 * layouting and stylings
-* Google Analytics integration
 * validations
 
 ## Setup
