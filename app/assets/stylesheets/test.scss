@@ -65,7 +65,6 @@ $red: #e2001a;
         li {
           background: $light-grey;
           padding: 0 10px;
-          height: 60px;
 
           &:first-child {
             position: relative;
@@ -83,6 +82,9 @@ $red: #e2001a;
         > li ul.layer-3 {
           > li {
             height: 30px;
+            &:first-child {
+              margin-top: 10px;
+            }
           }
         }
       }
