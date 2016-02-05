@@ -44,7 +44,6 @@ $(function() {
         width = ($(this).outerWidth())/2;
         height = $(this).outerHeight();
         var steering = getSteering(width, height)
-        console.log(ID1);
         $(this).children().first().after(" <small>("+ ID1 +")</small>");
         var xStartLi2 = $currentLi.offset().left + liEndWidth;
         var yStartLi2 = $currentLi.offset().top + liEndHeight/2;
