@@ -7,29 +7,17 @@ $(function() {
     naming();
 
     /* hover Funktion */
-    var leaveTimer1;
-    var leaveTimer2;
-    var currentL2;
-    var currentL3;
     $('.layer-1 > li').hover(function(){
-      clearTimeout(leaveTimer1);
-      $(this).siblings().children('ul').css({ 'visibility' : 'hidden'});
       currentL2 = $(this).children('ul');
       currentL2.css({ 'visibility' : 'visible'});
     }, function () {
-        leaveTimer1 = setTimeout(function() {
         currentL2.css({ 'visibility' : 'hidden'});
-      }, 250);
     }); 
     $('.layer-2 > li').hover(function(){
-      clearTimeout(leaveTimer2);
-      $(this).siblings().children('.mega').css({ 'visibility' : 'hidden'});
       currentL3 = $(this).children('.mega');
       currentL3.css({ 'visibility' : 'visible'}); 
     }, function () {
-        leaveTimer2 = setTimeout(function() {
         currentL3.css({ 'visibility' : 'hidden'}); 
-      }, 250);
     });
 
     /* Berechnung Index of Difficulty */

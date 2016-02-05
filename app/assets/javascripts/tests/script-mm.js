@@ -8,14 +8,10 @@ $(function() {
 
      var leaveTimer;
      $('.layer-1 > li').hover(function(){
-      clearTimeout(leaveTimer);
-      $('.mega').css({ 'visibility' : 'hidden'});
       $currentMega = $(this).children('.mega');
       $currentMega.css({ 'visibility' : 'visible'});
      }, function () {
-      leaveTimer = setTimeout(function() {
         $currentMega.css({ 'visibility' : 'hidden'}); 
-      }, 250);
      });
 
     /* Berechnung Index of Difficulty */
