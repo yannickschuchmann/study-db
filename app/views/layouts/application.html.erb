@@ -6,6 +6,9 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <%= render "layouts/analytics" %>
+
   </head>
 
   <body>
@@ -30,6 +33,5 @@
         </div>
       </div>
     </div>
-    <%= render "layouts/analytics" %>
   </body>
 </html>
