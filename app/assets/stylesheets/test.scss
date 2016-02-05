@@ -79,9 +79,12 @@ $red: #e2001a;
           display: flex;
         }
         
-        > li > ul.layer-3 {
+        > li ul.layer-3 {
           > li {
-            margin: 0 0 2px 2px;
+            height: 30px;
+            &:first-child {
+              margin-top: 10px;
+            }
           }
         }
       }
@@ -101,8 +104,8 @@ $red: #e2001a;
         font-size: 13px;
         &:first-child {
           font-weight: bold;
-          font-size: 15px;
-          color: #3b515b;
+          font-size: 16px;
+          color: #000;
         }
       }
     }
@@ -122,14 +125,6 @@ $red: #e2001a;
   nav.dynamic-mega {
     .mega {
       min-width: auto;
-      flex-flow: column;
-    }
-    .menu-row {
-      display: flex;
-      margin-top: 10px;
-      &:first-child {
-        margin-top: 0;
-      }
     }
   }
 }
