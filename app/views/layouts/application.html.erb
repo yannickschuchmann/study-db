@@ -9,6 +9,11 @@
 
     <%= render "layouts/analytics" %>
 
+    <% if action_name == "test" %>
+    <script type="text/javascript" charset="utf-8">
+      window.currentCaseSheet = <%= @sheet_number %>;
+    </script>
+    <% end %>
   </head>
 
   <body>
