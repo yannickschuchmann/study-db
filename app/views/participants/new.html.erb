@@ -3,7 +3,7 @@
   <%= render "layouts/wizard" %>
 </h1>
 
-<%= form_for @participant, url: {action: "create"}, :html => {class: "form-inline"} do |f| %>
+<%= form_for @participant, url: {action: "create"}, :html => {class: "new_participant form-inline"} do |f| %>
     <% if @participant.errors.any? %>
     <div class="errors">
       <ul>

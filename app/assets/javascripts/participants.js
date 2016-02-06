@@ -30,11 +30,8 @@ $(function() {
 
     // set additional
     if ($('.additional-hidden').val() != "") {
-      var value = $('input[name="additional"]').val();
-      var $el = getActiveAdditional();
-      if ($el && $el.is("input[type=text]")) {
-        $el.val(value);
-      }
+      var value = $('.additional-hidden').val();
+      getActiveAdditional().val(value);
     }
 
     showActiveAdditional();
@@ -55,7 +52,7 @@ $(function() {
         $('.additional-hidden').val('');
       }
 
-      return;
+      return true;
 
     });
   };
