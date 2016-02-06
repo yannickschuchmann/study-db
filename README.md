@@ -8,14 +8,14 @@ html navigation models (cases).
 * ~~Track how long it takes for a participant to complete one test.~~
 * ~~Add polls after each navigation model, currently [NASA TLX](https://en.wikipedia.org/wiki/NASA-TLX), [attrakdiff](http://attrakdiff.de/)~~
 * ~~Instructions page~~
-* ~~process wizard~~
+* ~~Process wizard~~
 * ~~Google Analytics integration~~
+* ~~Validations~~
+* ~~Layouting and stylings~~
 
 ### Todo:
 
-* Multi-language, currently only german
-* layouting and stylings
-* validations
+* Multi-language, currently only german support
 
 ## Setup
 
