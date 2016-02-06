@@ -1,5 +1,6 @@
 de:
   answer_every_question: Bitte beantworte alle Fragen.
+  tracking_error: Konnte Tracking nicht speichern.
   errors:
       format: "%{attribute} %{message}"
       messages:

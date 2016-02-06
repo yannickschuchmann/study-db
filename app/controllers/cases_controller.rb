@@ -48,7 +48,8 @@ class CasesController < ApplicationController
     if tracking.save
       redirect_to handle_case_path
     else
-      redirect_to test_case_path, :flash => { :error => "Couldn't update tracking." }
+      flash[:error] = I18n.t(:tracking_error)
+      render "cases/" + @case.name.downcase.gsub(/ /, "_") + "/" + params[:case_sheet]
     end
   end
 

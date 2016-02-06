@@ -22,3 +22,4 @@
 en:
   hello: "Hello world"
   answer_every_question: Please answer every question.
+  tracking_error: Couldn't update tracking.
