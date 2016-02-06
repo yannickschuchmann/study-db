@@ -1,4 +1,7 @@
 $(function() {
+
+  if ($('.new_participant').length == 0) return;
+
   var $jobDropdown = $('select.job');
 
   var $additionals = $('.additional');
@@ -23,7 +26,7 @@ $(function() {
       $el = $additionalOther;
     }
     return $el;
-  }
+  };
 
   var setup = function() {
     $additionals.hide();
@@ -31,6 +34,7 @@ $(function() {
     // set additional
     if ($('.additional-hidden').val() != "") {
       var value = $('.additional-hidden').val();
+      console.debug($('.additional-hidden').val());
       getActiveAdditional().val(value);
     }
 
