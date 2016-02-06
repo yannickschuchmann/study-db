@@ -97,7 +97,7 @@ class CasesController < ApplicationController
       flash.clear
       redirect_to handle_case_path
     else
-      flash[:error] = "Please answer every question."
+      flash[:error] = I18n.t(:answer_every_question)
       render "cases/questionaries/" + @questionary.name
     end
   end
