@@ -5,13 +5,13 @@
 
 <%= form_for @participant, url: {action: "create"}, :html => {class: "new_participant form-inline"} do |f| %>
     <% if @participant.errors.any? %>
-    <div class="errors">
-      <ul>
-      <% @participant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div class="alert alert-danger errors" role="alert">
+        <ul>
+        <% @participant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <h4>1. Allgemeine Informationen</h4>

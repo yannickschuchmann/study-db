@@ -33,6 +33,7 @@ class CasesController < ApplicationController
   end
 
   def test
+    flash.clear
     order = JSON.parse(@current_participant.sheet_order)
     index = @current_participant.trackings.where(case_id: @case.id).count
     @sheet_number = order[index]
@@ -53,6 +54,7 @@ class CasesController < ApplicationController
 
   def answer
     set_current_questionary
+    flash.clear
     render "cases/questionaries/" + @questionary.name
   end
 
@@ -65,22 +67,38 @@ class CasesController < ApplicationController
       answerData.each do |answer|
         answer[:case_id] = @case.id.to_s
         answer[:participant_id] = @current_participant.id.to_s
+        answer[:type] = "value"
         answers << answer
       end
     else
       answerData.each do |a|
+        answerData[a][:case_id] = @case.id.to_s
         answerData[a][:participant_id] = @current_participant.id
+        answerData[a][:type] = "comparison"
         answers << answerData[a]
       end
     end
 
-    if Answer.create(answers) and Poll.create(participant: @current_participant,
+    # validations
+    if answers.length == @questionary.questions.count
+      is_valid = true
+      answers.each do |a|
+        a = Answer.new(a)
+        is_valid = false if a.invalid?
+      end
+    else
+      is_valid = false
+    end
+
+    if is_valid and Answer.create(answers) and Poll.create(participant: @current_participant,
                                               case: @case,
                                               questionary: @questionary,
                                               answered: true)
+      flash.clear
       redirect_to handle_case_path
     else
-      redirect_to answer_case_path, :flash => { :error => "Couldn't create answers." }
+      flash[:error] = "Please answer every question."
+      render "cases/questionaries/" + @questionary.name
     end
   end
 

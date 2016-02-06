@@ -2,10 +2,16 @@
   Fragebogen
   <%= render "layouts/wizard" %>
 </h1>
+
+
 <div class="alert alert-info" role="alert">
   <i class="fa fa-pencil"></i>
   <span>Bitte gib mit Hilfe der folgenden Wortpaare deinen Eindruck zu der gerade benutzten Navigation wieder.</span>
 </div>
+
+<% unless flash[:error].blank? %>
+<div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+<% end %>
 
 <%= form_for "answers", url: answered_case_path, html: {class: "attr-form"} do |f| %>
     <% @questionary.questions.each_with_index do |question, index| %>

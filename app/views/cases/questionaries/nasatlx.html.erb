@@ -7,8 +7,10 @@
 	<span>Schiebe den Regler an den Punkt, der deine Erfahrung in Hinblick auf die Aufgabe am besten verdeutlicht.</span>
 </div>
 
+<% unless flash[:error].blank? %>
+    <div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+<% end %>
 
-	
 <%= form_for "answers", url: answered_case_path do |f| %>
 <% @questionary.questions.each do |question| %>
 <div class="row nasa">
