@@ -3,12 +3,15 @@ class Participant < ApplicationRecord
   enum gender: { male: 0, female: 1 }
   enum web_usage: { "sehr oft": 0, "oft": 1, "manchmal": 2, "selten": 3, "nie": 4 }
 
-
   has_one :profession, dependent: :destroy
   has_many :trackings
-  has_many :cases,  -> { uniq },through: :trackings
+  has_many :cases,  -> { uniq }, through: :trackings
   has_many :answers
   has_many :polls
+
+  validates :age, presence: true
+  validates :gender, presence: true
+  validates :web_usage, presence: true
 
   accepts_nested_attributes_for :profession
 

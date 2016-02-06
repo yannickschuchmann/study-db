@@ -11,7 +11,7 @@
     <% @questionary.questions.each_with_index do |question, index| %>
     <div class="row attrakdiff-row">
       <% labels = question.label.split("|")
-         answer = question.answers.build
+         answer = question.answers.build(type: "comparison")
       %>
       <div class="col-md-4 text-right">
         <label><%= labels[0] %></label>
