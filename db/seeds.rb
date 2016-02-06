@@ -8,7 +8,7 @@
 
 Job.find_or_create_by(name: "Schüler")
 Job.find_or_create_by(name: "Student")
-Job.find_or_create_by(name: "Renter")
+Job.find_or_create_by(name: "Rentner")
 Job.find_or_create_by(name: "Berufstätiger")
 Job.find_or_create_by(name: "Sonstiges")
 
