@@ -24,6 +24,14 @@ class CasesController < ApplicationController
     end
   end
 
+  def debug
+    @current_participant = Participant.new
+    @case = Case.all[params[:case_id].to_i - 1]
+    @sheet_number = params[:sheet_number]
+    @debug_mode = true
+    render "cases/" + @case.name.downcase.gsub(/ /, "_") + "/" + @sheet_number.to_s
+  end
+
   def test
     order = JSON.parse(@current_participant.sheet_order)
     index = @current_participant.trackings.where(case_id: @case.id).count

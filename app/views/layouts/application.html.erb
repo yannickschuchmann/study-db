@@ -14,6 +14,12 @@
       window.currentCaseSheet = <%= @sheet_number %>;
     </script>
     <% end %>
+
+    <% if @debug_mode %>
+    <script type="text/javascript" charset="utf-8">
+      window.debug = true;
+    </script>
+    <% end %>
   </head>
 
   <body>

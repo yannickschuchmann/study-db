@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cases/test', as: :test_case
+  get 'cases/:case_id/:sheet_number' => 'cases#debug', as: :debug_case
   get 'cases/answer', as: :answer_case
   get 'cases/tested', as: :tested_case
   post 'cases/answered', as: :answered_case

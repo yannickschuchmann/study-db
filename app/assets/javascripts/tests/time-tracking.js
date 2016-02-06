@@ -23,6 +23,10 @@ function timeTracking() {
   $trackEnd.click(function () {
     timeStamps.endingAt = Date.now();
 
+    if (window.debug == true) {
+      alert(timeStamps.getResult());
+      return;
+    }
     // e.g. http://domain.tld/cases/tested?time=1234&case_sheet=4
     var url = window.location.origin + "/cases/tested?time=" +
       timeStamps.getResult() + "&case_sheet=" + window.currentCaseSheet;
