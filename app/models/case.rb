@@ -4,7 +4,7 @@ class Case < ApplicationRecord
   has_many :questionaries, through: :polls
 
   def self.sheets
-    4
+    7
   end
 
   def completed? participant
