@@ -1,3 +1,7 @@
+@-ms-viewport{
+	width: device-width;
+}
+
 body {
 	color: $dark-grey;
 }
@@ -10,6 +14,7 @@ h1 {
 	padding-bottom: 7px;
 	margin-bottom: 20px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 h4 {
@@ -24,9 +29,10 @@ h4 {
 p {
 	line-height: 30px;
 }
-
-.container {
-	width: 1230px;
+@media(min-width: 1200px) {
+	.container {
+		width: 1230px;
+	}
 }
 
 .show-with-javascript {
@@ -113,6 +119,16 @@ header {
 		top: 48px;
 		font-size: 21px;
 		font-weight: bold;
+	}
+	@media(max-width: 555px) {
+		.title {
+			position: static;
+		}
+		.hci-logo {
+			width: auto;
+			height: 30px;;
+			float: none;
+		}
 	}
 }
 

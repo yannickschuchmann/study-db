@@ -3,6 +3,8 @@ de:
   tracking_error: Konnte Tracking nicht speichern.
   enable_javascript: "Damit du an dieser Studie teilnehmen kannst, muss Javascript in deinem Browser aktiviert sein. <br>
                          Bitte aktiviere Javascript, um fortzufahren."
+  min_width: "Smartphones, Tablets, Netbooks und andere kleine Bildschirme werden nicht unterstützt."
+  optimized_width: Bitte nutze einen größeren Bildschirm
   errors:
       format: "%{attribute} %{message}"
       messages:

@@ -4,6 +4,7 @@
     <title>Studydb</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -48,6 +49,18 @@
         </noscript>
         <div class="col-md-12 show-with-javascript">
           <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade bs-example-modal-sm" id="width-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><%= t(:optimized_width) %></h4>
+          </div>
+          <div class="modal-body">
+            <%= t(:min_width).html_safe %>
+          </div>
         </div>
       </div>
     </div>

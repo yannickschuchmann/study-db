@@ -18,6 +18,12 @@
 //= require_tree .
 
 $(function() {
+
+  $(window).on("load resize", function() {
+    handleScreenSize();
+  });
+
+
 	if ($('.test-dropdown').length > 0) {
 		window.calculateDropdown();
 	} else if ($('.test-mega').length > 0) {
@@ -26,3 +32,11 @@ $(function() {
 
   $('.show-with-javascript').show();
 });
+
+var handleScreenSize = function() {
+  if (window.innerWidth < 1200) {
+    $('#width-modal').modal({backdrop: "static", keyboard: false});
+  } else {
+    $('#width-modal').modal("hide");
+  }
+};
