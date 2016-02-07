@@ -20,7 +20,7 @@
 	</div>
 	<div class="col-md-6 regulator">
 	  <%
-	    answer = question.answers.build(type: "value")
+	    answer = question.answers.build
 	  %>
 	  <%= f.fields_for "[]", answer do |af| %>
 	    <%= af.hidden_field :question_id, value: question.id %>
