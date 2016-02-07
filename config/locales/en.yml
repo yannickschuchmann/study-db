@@ -23,3 +23,4 @@ en:
   hello: "Hello world"
   answer_every_question: Please answer every question.
   tracking_error: Couldn't update tracking.
+  enable_javascript: To participate in this study you have to enable javascript in your browser.
