@@ -1,0 +1,12 @@
+<% labels = question.label
+   answer = question.answers.build(type: "text")
+%>
+<div class="col-md-4 text-right">
+  <label><%= labels %></label>
+</div>
+<div class="col-md-8">
+  <%= f.fields_for index.to_s+"[]", answer do |af| %>
+      <%= af.hidden_field :question_id, value: question.id %>
+      <%= af.text_area :text, placeholder: "Hast du noch Anmerkungen?", rows: 4, class: "form-control" %>
+  <% end %>
+</div>

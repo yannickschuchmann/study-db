@@ -16,22 +16,16 @@
 <%= form_for "answers", url: answered_case_path, html: {class: "attr-form"} do |f| %>
     <% @questionary.questions.each_with_index do |question, index| %>
     <div class="row attrakdiff-row">
-      <% labels = question.label.split("|")
-         answer = question.answers.build(type: "comparison")
-      %>
-      <div class="col-md-4 text-right">
-        <label><%= labels[0] %></label>
-      </div>
-      <div class="col-md-4">
-        <%= f.fields_for index.to_s+"[]", answer do |af| %>
-            <%= af.hidden_field :question_id, value: question.id %>
-            <% (0..6).each do |i| %>
-              <%= af.radio_button "value", i %>
+      <div class="col-md-12">
+        <div class="attrakdiff-border">
+          <div class="row">
+            <% if question.kind == "comparison" %>
+              <%= render partial: "cases/questionaries/attrak_comparison", locals: {question: question, index: index, f: f} %>
+            <% else %>
+              <%= render partial: "cases/questionaries/attrak_text", locals: {question: question, index: index, f: f} %>
             <% end %>
-        <% end %>
-      </div>
-      <div class="col-md-4">
-        <label><%= labels[1] %></label>
+          </div>
+        </div>
       </div>
     </div>
     <% end %>

@@ -72,10 +72,11 @@ class CasesController < ApplicationController
         answers << answer
       end
     else
+      questions = Question.all
       answerData.each do |a|
         answerData[a][:case_id] = @case.id.to_s
         answerData[a][:participant_id] = @current_participant.id
-        answerData[a][:type] = "comparison"
+        answerData[a][:type] = questions.find(answerData[a][:question_id]).kind
         answers << answerData[a]
       end
     end

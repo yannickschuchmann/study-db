@@ -141,6 +141,10 @@ form {
 		padding: 0 9px;
 		height: 30px;
 	}
+	textarea.form-control {
+		padding: 6px 12px;
+		height: auto;
+	}
 
 	.sibbling {
 		padding-top: 10px;
@@ -155,9 +159,12 @@ form {
 	}
 
 	.attrakdiff-row {
-		margin: 8px 0;
-		border-bottom: 1px solid $grey;
-		&:last-of-type {
+		margin-top: 8px;
+		margin-bottom: 8px;
+		.attrakdiff-border {
+			border-bottom: 1px solid $grey;
+		}
+		&:last-of-type .attrakdiff-border {
 			border-bottom: none;
 		}
 		label {
