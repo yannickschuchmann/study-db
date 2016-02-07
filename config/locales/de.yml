@@ -1,6 +1,8 @@
 de:
   answer_every_question: Bitte beantworte alle Fragen.
   tracking_error: Konnte Tracking nicht speichern.
+  enable_javascript: "Damit du an dieser Studie teilnehmen kannst, muss Javascript in deinem Browser aktiviert sein. <br>
+                         Bitte aktiviere Javascript, um fortzufahren."
   errors:
       format: "%{attribute} %{message}"
       messages:

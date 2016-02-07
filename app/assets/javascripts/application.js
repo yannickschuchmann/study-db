@@ -23,4 +23,6 @@ $(function() {
 	} else if ($('.test-mega').length > 0) {
 		window.calculateMega();
 	}
+
+  $('.show-with-javascript').show();
 });
