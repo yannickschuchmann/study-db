@@ -18,11 +18,12 @@
 //= require_tree .
 
 $(function() {
+	
+	$('.show-with-javascript').show();
+
 	if ($('.test-dropdown').length > 0) {
 		window.calculateDropdown();
 	} else if ($('.test-mega').length > 0) {
 		window.calculateMega();
 	}
-
-  $('.show-with-javascript').show();
 });
