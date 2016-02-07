@@ -49,7 +49,7 @@ class CasesController < ApplicationController
       redirect_to handle_case_path
     else
       flash[:error] = I18n.t(:tracking_error)
-      render "cases/" + @case.name.downcase.gsub(/ /, "_") + "/" + params[:case_sheet]
+      redirect_to :test_case
     end
   end
 

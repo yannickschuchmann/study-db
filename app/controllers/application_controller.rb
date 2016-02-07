@@ -25,8 +25,9 @@ class ApplicationController < ActionController::Base
       if @force_user && !@current_participant.completed? && controller_name != "cases"
         redirect_to handle_case_path
       end
-    elsif @force_user && controller_name != "participants" && (controller_name != "content" || action_name == "completed")
-        redirect_to new_participant_path
+    elsif @force_user && ((controller_name != "content" && controller_name != "participants") or
+      controller_name == "content" && action_name == "completed")
+        redirect_to root_path
     end
   end
 end
