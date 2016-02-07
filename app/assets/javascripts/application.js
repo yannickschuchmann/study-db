@@ -11,10 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
-//= require turbolinks
 //= require_tree .
 
 $(function() {
@@ -24,13 +22,17 @@ $(function() {
   });
 
 
-	$('.show-with-javascript').show();
+	$('.show-with-javascript').show({
+      duration: 0,
+      complete: function() {
+        if ($('.test-dropdown').length > 0) {
+          window.calculateDropdown();
+        } else if ($('.test-mega').length > 0) {
+          window.calculateMega();
+        }
+      }
+  });
 
-	if ($('.test-dropdown').length > 0) {
-		window.calculateDropdown();
-	} else if ($('.test-mega').length > 0) {
-		window.calculateMega();
-	}
 
 });
 
