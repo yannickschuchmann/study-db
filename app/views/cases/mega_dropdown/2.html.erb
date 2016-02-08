@@ -1,8 +1,8 @@
 <h1><%= @case.name %></h1>
 
 <div class="alert alert-info" role="alert">
-      <i class="fa fa-pencil"></i><span> Finde in <span class="startname"></span> <i class="fa fa-arrow-right"></i> <span class="helpingname"></span> den Namen <span class="goalname"></span></span>
-    </div>
+  <span><i class="fa fa-pencil"></i> Klicke in <span class="startname"></span> auf den Namen <span class="goalname"></span></span>
+</div>
 
 <% unless flash[:error].blank? %>
     <div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
@@ -254,7 +254,7 @@
         </li>
 
 
-        <li class="category-1"><span></span><i class="fa fa-chevron-right"></i>
+        <li class="category-1"><span></span>
           <ul class="layer-2">
 
             <li class="category-2"><span></span><i class="fa fa-chevron-right"></i>
