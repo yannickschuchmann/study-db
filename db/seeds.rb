@@ -38,6 +38,7 @@ Question.find_or_create_by(questionary: q2, kind: "comparison", label: "verwirre
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "motivierend|entmutigend")
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "herkömmlich|neuartig")
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "widerspenstig|handhabbar")
+Question.find_or_create_by(questionary: q2, kind: "text", label: "Anmerkungen", required: false)
 
 
 

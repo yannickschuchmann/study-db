@@ -12,6 +12,10 @@ module WizardHelper
     ("<li class=\"%s\">%s</li>" % [class_names, index]).html_safe
   end
 
+  def is_last_step
+    get_active_state == Case.count + 1
+  end
+
   private
     def get_active_state
       unless @current_participant.nil? then @current_participant.cases.length + 1 else 1 end

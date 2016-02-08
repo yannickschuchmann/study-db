@@ -1,0 +1,17 @@
+<% labels = question.label.split("|")
+   answer = question.answers.build
+%>
+<div class="col-md-4 text-right">
+  <label><%= labels[0] %></label>
+</div>
+<div class="col-md-4">
+  <%= f.fields_for index.to_s+"[]", answer do |af| %>
+      <%= af.hidden_field :question_id, value: question.id %>
+      <% (0..6).each do |i| %>
+          <%= af.radio_button "value", i %>
+      <% end %>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <label><%= labels[1] %></label>
+</div>

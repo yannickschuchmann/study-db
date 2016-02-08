@@ -5,9 +5,8 @@ class Answer < ApplicationRecord
 
   self.inheritance_column = :_type_disabled
 
-  validates :type, presence: true
-  validates :value, presence: true, unless: Proc.new { |a| a.type == "text" }
-  validates :text, presence: true, if: Proc.new { |a| a.type == "text" }
+  validates :value, presence: true, if: Proc.new { |a| a.question.required and a.question.kind != "text" }
+  validates :text, presence: true, if: Proc.new { |a| a.question.required and a.question.kind == "text" }
 
   def self.types
     %w(Value Text Comparison)

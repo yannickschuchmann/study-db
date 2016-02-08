@@ -49,7 +49,7 @@ class CasesController < ApplicationController
       redirect_to handle_case_path
     else
       flash[:error] = I18n.t(:tracking_error)
-      render "cases/" + @case.name.downcase.gsub(/ /, "_") + "/" + params[:case_sheet]
+      redirect_to :test_case
     end
   end
 
@@ -68,14 +68,13 @@ class CasesController < ApplicationController
       answerData.each do |answer|
         answer[:case_id] = @case.id.to_s
         answer[:participant_id] = @current_participant.id.to_s
-        answer[:type] = "value"
         answers << answer
       end
     else
+      questions = Question.all
       answerData.each do |a|
         answerData[a][:case_id] = @case.id.to_s
         answerData[a][:participant_id] = @current_participant.id
-        answerData[a][:type] = "comparison"
         answers << answerData[a]
       end
     end
