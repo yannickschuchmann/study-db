@@ -18,6 +18,12 @@ module WizardHelper
 
   private
     def get_active_state
-      unless @current_participant.nil? then @current_participant.cases.length + 1 else 1 end
+      if @current_participant.nil?
+        1
+      elsif @current_participant.cases_completed?
+        5
+      else
+        @current_participant.cases.length + 1
+      end
     end
 end
