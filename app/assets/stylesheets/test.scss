@@ -81,11 +81,13 @@ $red: #e2001a;
         .mega {
           background: $grey;
           padding: 20px 0;
+          min-height: 300px;
           position: absolute;
           left: 100%;
           top: 0;
           visibility: hidden;
-          display: flex;
+          //display: flex; changed
+          display: block;
         }
         
         > li ul.layer-3 {

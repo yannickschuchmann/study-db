@@ -1,3 +1,5 @@
+Math.log2 = Math.log2 || function(x){return Math.log(x)*Math.LOG2E;};
+
 function getAngle (xStart, yStart, xEnd, yEnd){
       var a = Math.abs(yStart - yEnd);
       var b = Math.abs(xStart - xEnd);

@@ -13,6 +13,7 @@ h1 {
 	border-bottom: 1px solid $grey;
 	padding-bottom: 7px;
 	margin-bottom: 20px;
+	margin-top: 0;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -67,7 +68,7 @@ p {
 	display: flex;
 	align-items: center;
 	font-size: 18px;
-	line-height: 52px;
+	line-height: 36px;
 
 	.startname, .helpingname, .goalname {
 		color: $red;
@@ -101,22 +102,44 @@ p {
 	}
 }
 
+@-moz-document url-prefix() {
+    .nasa {
+    	.regulator {
+        	span:last-child {
+				margin-top: -36px;
+       		}
+    	}
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .nasa {
+    	.regulator {
+        	span:last-child {
+				margin-top: -88px;
+       		}
+    	}
+    }
+}
+
 header {
 	margin-top: 20px;
 	padding-bottom: 20px;
+	margin-bottom: 20px;
 	border-bottom: 1px solid $grey;
 	.row {
 		position: relative;
 	}
 	.hci-logo {
-		width: 8%;
+		width: 7%;
+		height: 69px;
 		float: right;
 	}
 
 	.title {
 		position:absolute;
 		right: 117px;
-		top: 48px;
+		top: 46px;
 		font-size: 21px;
 		font-weight: bold;
 	}
