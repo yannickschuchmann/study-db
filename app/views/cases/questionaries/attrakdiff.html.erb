@@ -30,10 +30,6 @@
     </div>
     <% end %>
 
-    <% if is_last_step %>
-      <%= submit_tag "Studie abschließen", class:"btn btn-default" %>
-    <% else %>
-      <%= submit_tag "Zum nächsten Testfall", class:"btn btn-default" %>
-    <% end %>
+    <%= submit_tag t(:next_case), class:"btn btn-default" %>
 <% end %>
 
