@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :participant
-  belongs_to :case
+  belongs_to :case, optional: true
 
   self.inheritance_column = :_type_disabled
 

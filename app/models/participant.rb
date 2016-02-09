@@ -26,6 +26,12 @@ class Participant < ApplicationRecord
   end
 
   def completed?
-    self.cases_completed?
+    if self.cases_completed?
+      self.polls.each do |poll|
+        return true if poll.questionary.name == "conclusion"
+      end
+    end
+
+    return false
   end
 end

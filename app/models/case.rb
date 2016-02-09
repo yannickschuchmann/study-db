@@ -16,6 +16,6 @@ class Case < ApplicationRecord
   end
 
   def polls_completed? participant
-    self.polls.where(participant: participant, answered: true).count == Questionary.count
+    self.polls.where(participant: participant, answered: true).count == Questionary.count_for_cases
   end
 end

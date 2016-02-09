@@ -25,10 +25,10 @@
 	  <%= f.fields_for "[]", answer do |af| %>
 	    <%= af.hidden_field :question_id, value: question.id %>
 
-      <% Case.all.each_with_index do |c, index| %>
+      <% Case.all.each do |c| %>
         <div class="col-md-4">
-          <%= af.label "value_" + index.to_s, c.name, class: "radio-inline" do %>
-              <%= af.radio_button :value, index %> <%= c.name %>
+          <%= af.label "value_" + c.id.to_s, c.name, class: "radio-inline" do %>
+              <%= af.radio_button :value, c.id.to_s %> <%= c.name %>
           <% end %>
         </div>
       <% end %>

@@ -13,6 +13,13 @@ class CasesController < ApplicationController
 
     set_current_case
 
+    if @case.nil? # cases completed
+      if action_name != "answer"
+        redirect_to answer_case_path
+      end
+      return
+    end
+
     tracking_count = @case.trackings.where(participant: @current_participant).count
 
     if @force_user
@@ -64,18 +71,18 @@ class CasesController < ApplicationController
     answers = []
     answerData = params.permit![:answers]
 
-    if @questionary.name == "nasatlx"
-      answerData.each do |answer|
-        answer[:case_id] = @case.id.to_s
-        answer[:participant_id] = @current_participant.id.to_s
-        answers << answer
-      end
-    else
+    if @questionary.name == "attrakdiff"
       questions = Question.all
       answerData.each do |a|
         answerData[a][:case_id] = @case.id.to_s
         answerData[a][:participant_id] = @current_participant.id
         answers << answerData[a]
+      end
+    else
+      answerData.each do |answer|
+        answer[:case_id] = @case.id.to_s unless @case.nil?
+        answer[:participant_id] = @current_participant.id.to_s
+        answers << answer
       end
     end
 
@@ -89,11 +96,13 @@ class CasesController < ApplicationController
     else
       is_valid = false
     end
+    poll = Poll.new(participant: @current_participant,
+                    questionary: @questionary,
+                    answered: true)
 
-    if is_valid and Answer.create(answers) and Poll.create(participant: @current_participant,
-                                              case: @case,
-                                              questionary: @questionary,
-                                              answered: true)
+    poll.case = @case unless @case.nil?
+
+    if is_valid and Answer.create(answers) and poll.save
       flash.clear
       redirect_to handle_case_path
     else
@@ -105,6 +114,12 @@ class CasesController < ApplicationController
   private
 
     def set_current_case
+
+      if @current_participant.cases_completed?
+        @case = nil
+        return
+      end
+
       cases_count = @current_participant.cases.length
       if cases_count == 0
         @case = Case.first
@@ -121,6 +136,12 @@ class CasesController < ApplicationController
     end
 
     def set_current_questionary
+
+      if @case.nil? and @current_participant.cases_completed?
+        @questionary = Questionary.find_by_name("conclusion")
+        return
+      end
+
       polls_count = @case.polls.where(participant: @current_participant).count
 
       if polls_count == 0
