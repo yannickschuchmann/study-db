@@ -294,4 +294,4 @@
 	</nav>
 </div>
 
-<%= link_to "Fake test", tested_case_path(:time => 7723, :case_sheet => @sheet_number) %>
+<%= link_to("Fake test", tested_case_path(:time => 7723, :case_sheet => @sheet_number)) unless Rails.env.production? %>
