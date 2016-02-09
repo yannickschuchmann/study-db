@@ -18,6 +18,8 @@ Case.find_or_create_by(name: "Dynamic Mega Menu")
 
 q1 = Questionary.find_or_create_by(name: "nasatlx")
 q2 = Questionary.find_or_create_by(name: "attrakdiff", description: 'Nachfolgend findest Du Wortpaare, mit deren Hilfe Du die Beurteilung vornehmen kannst. Sie stellen jeweils extreme Gegensätze dar, zwischen denen eine Abstufung möglich ist. Diese Bewertung bedeutet, dass das Produkt eher sympathisch, aber noch verbesserungsbedürftig ist.Denken Sie nicht lange über die Wortpaare nach, sondern geben Sie bitte die Einschätzung ab, die Ihnen spontan in den Sinn kommt. Vielleicht passen einige Wortpaare nicht so gut auf das Produkt, kreuzen Sie aber trotzdem bitte immer eine Antwort an. Denken Sie daran, dass es keine "richtigen" oder "falschen" Antworten gibt - nur Ihre persönliche Meinung zählt!')
+q3 = Questionary.find_or_create_by(name: "conclusion")
+
 
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Geistige Anforderung", description: "Wie hoch war die geistige Anforderung der Aufgaben? (z.B. Denken, Entscheiden, Rechnen, Erinnern, Hinsehen, Suchen ...)?")
 Question.find_or_create_by(questionary: q1, kind: "value", label: "Körperliche Anforderung", description: "Wie viel körperliche Aktivität war erforderlich (z.B. ziehen, drücken, drehen, steuern, aktivieren ...)?")
@@ -40,6 +42,7 @@ Question.find_or_create_by(questionary: q2, kind: "comparison", label: "herkömm
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "widerspenstig|handhabbar")
 Question.find_or_create_by(questionary: q2, kind: "text", label: "Anmerkungen", required: false)
 
+Question.find_or_create_by(questionary: q3, kind: "value", label: "Welche Navigationsart fandest du am besten?")
 
 
 

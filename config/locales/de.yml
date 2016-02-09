@@ -6,6 +6,7 @@ de:
   min_width: "Smartphones, Tablets, Netbooks und andere kleine Bildschirme werden nicht unterstützt."
   optimized_width: "Bitte nutze einen größeren Bildschirm"
   next_case: "Zum nächsten Testfall"
+  complete_study: "Studie abschließen"
   activerecord:
     models:
       participant: "Teilnehmer"

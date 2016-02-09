@@ -27,3 +27,4 @@ en:
   min_width: Screen width should be at least 1200px.
   optimized_width: Optimized for >= 1200px width
   next_case: Next case
+  complete_study: "Complete study"

@@ -1,0 +1,41 @@
+<h1>
+  Fragebogen
+  <%= render "layouts/wizard" %>
+</h1>
+<div class="alert alert-info" role="alert">
+	<i class="fa fa-pencil"></i>
+	<span>Abschließend noch eine letzte Frage an dich:</span>
+</div>
+
+<% unless flash[:error].blank? %>
+    <div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+<% end %>
+
+<%= form_for "answers", url: answered_case_path do |f| %>
+<% @questionary.questions.each do |question| %>
+<div class="row conclusion">
+	<div class="col-md-12">
+    <h4><%= question.label %></h4>
+	</div>
+	<div class="col-md-12">
+    <div class="row">
+	  <%
+	    answer = question.answers.build
+	  %>
+	  <%= f.fields_for "[]", answer do |af| %>
+	    <%= af.hidden_field :question_id, value: question.id %>
+
+      <% Case.all.each_with_index do |c, index| %>
+        <div class="col-md-4">
+          <%= af.label "value_" + index.to_s, c.name, class: "radio-inline" do %>
+              <%= af.radio_button :value, index %> <%= c.name %>
+          <% end %>
+        </div>
+      <% end %>
+	  <% end %>
+    </div>
+	</div>
+</div>
+<% end %>
+<%= submit_tag t(:complete_study), class:"btn btn-default" %>
+<% end %>
