@@ -52,6 +52,7 @@ class CasesController < ApplicationController
     tracking = @current_participant.trackings.new(case_id: @case.id)
     tracking.time = params[:time]
     tracking.case_sheet = params[:case_sheet]
+    tracking.error_counter = params[:error_counter]
     if tracking.save
       redirect_to handle_case_path
     else
