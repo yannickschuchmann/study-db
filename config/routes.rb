@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   namespace :backend do
     root to: "participants#index"
     get 'participants/index'
+    get 'participants/:id' => 'participants#show', as: :participant
   end
 end
