@@ -43,6 +43,17 @@
     </div>
 
     <br>
+    <h4>3. Wie gut kannst du einen Computer bedienen?</h4>
+
+    <div class="form-group">
+      <% Participant.computer_usages.each do |computer_usage| %>
+          <%= f.label "computer_usage_" + computer_usage[0].gsub(/ /, "_"), computer_usage[0].to_sym, class: "radio-inline" do %>
+              <%= f.radio_button :computer_usage, computer_usage[0] %> <%= computer_usage[0] %>
+          <% end %>
+      <% end %>
+    </div>
+
+    <br>
     <h4>3. Tätigkeitsfeld</h4>
 
     <div class="form-group">

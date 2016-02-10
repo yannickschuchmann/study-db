@@ -14,6 +14,7 @@ de:
       participant:
         gender: "Geschlecht"
         web_usage: "Erfahrung im Web"
+        computer_usage: "Computererfahrung"
   errors:
       format: "%{attribute} %{message}"
       messages:

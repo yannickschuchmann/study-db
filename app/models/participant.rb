@@ -2,6 +2,7 @@ class Participant < ApplicationRecord
   enum age: { "10-20": 0, "21-30": 1, "31-40": 2, "41-50": 3, "51-60": 4, "61-70": 5, "71-99": 6 }
   enum gender: { male: 0, female: 1 }
   enum web_usage: { "sehr oft": 0, "oft": 1, "manchmal": 2, "selten": 3, "fast nie": 4 }
+  enum computer_usage: { "sehr gut": 0, "gut": 1, "durchschnittlich": 2, "eher schlecht": 3, "schlecht": 4 }
 
   has_one :profession, dependent: :destroy
   has_many :trackings
@@ -12,6 +13,7 @@ class Participant < ApplicationRecord
   validates :age, presence: true
   validates :gender, presence: true
   validates :web_usage, presence: true
+  validates :computer_usage, presence: true
 
   accepts_nested_attributes_for :profession
 
