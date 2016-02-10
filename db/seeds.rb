@@ -42,7 +42,7 @@ Question.find_or_create_by(questionary: q2, kind: "comparison", label: "herkömm
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "widerspenstig|handhabbar")
 Question.find_or_create_by(questionary: q2, kind: "text", label: "Anmerkungen", required: false)
 
-Question.find_or_create_by(questionary: q3, kind: "value", label: "Welche Navigationsart fandest du am besten?")
+Question.find_or_create_by(questionary: q3, kind: "value", label: "Welche Navigation hat dir am besten gefallen?")
 
 
 
