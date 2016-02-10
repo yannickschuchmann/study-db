@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-6">
+    <% Participant.column_names.each_with_index do |c, index| %>
+      <% if index == (Participant.column_names.length / 2).ceil %>
+      <% end %>
+        <div class="row">
+          <div class="col-md-6">
+            <strong><%= c %>:</strong>
+          </div>
+          <div class="col-md-6">
+            <span><%= @participant[c] %></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6"><strong>Job</strong></div>
+      <div class="col-md-6"><%= @participant.profession.job.name %></div>
+      <div class="col-md-6"><strong>Job Additional</strong></div>
+      <div class="col-md-6"><%= @participant.profession.additional %></div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+  <tr>
+    <% Tracking.column_names.each do |c| %>
+        <th><%= c %></th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @participant.trackings.each do |p| %>
+      <tr>
+        <% Tracking.column_names.each do |col| %>
+            <td><%= p[col] %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Questionaries</h2>
+<% answers = @participant.answers %>
+<% @participant.cases.each do |c| %>
+  <h3><%= c.name %></h3>
+  <% c.polls.where(participant: @participant).each do |poll| %>
+    <h4><%= poll.questionary.name %>:</h4>
+    <div class="row">
+    <% poll.questionary.questions.each do |question| %>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <strong><%= question.label %></strong>
+          </div>
+          <div class="col-md-6">
+            <% answer = answers.where(question_id: question.id, case_id: c.id).first
+               answer_value = question.kind == "text" ? answer.text : answer.value %>
+            <span><%= answer_value %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+  <h3>Conclusion:</h3>
+  <div class="row">
+  <% questionary = Questionary.find_by_name("conclusion") %>
+  <% questionary.questions.each do |question| %>
+    <% answer = answers.where(question_id: question.id, participant_id: @participant.id).first %>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6"><%= question.label %></div>
+          <div class="col-md-6"><%= answer.try(:value) %></div>
+        </div>
+      </div>
+  <% end %>
+  </div>

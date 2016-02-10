@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def force_user_to_journey
-    return if action_name == "debug" or controller_name == "settings"
+    return if action_name == "debug" or controller_name == "settings" or self.class.parent.to_s == "Backend"
 
     if Setting.find_by_name("app").maintenance
       render "content/pause" # for maintenance

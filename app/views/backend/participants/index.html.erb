@@ -1,0 +1,20 @@
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+  <tr>
+    <% Participant.column_names.each do |c| %>
+    <th><%= c %></th>
+    <% end %>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @participants.each do |p| %>
+    <tr>
+      <% Participant.column_names.each do |col| %>
+      <td><%= p[col] %></td>
+      <% end %>
+      <td><%= link_to "show", [:backend, p] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
