@@ -15,14 +15,15 @@ class ApplicationController < ActionController::Base
   end
 
   def force_user_to_journey
-    if @paused_mode = true
+    return if action_name == "debug" or controller_name == "settings"
+
+    if Setting.find_by_name("app").maintenance
       render "content/pause" # for maintenance
       return
     end
 
     @force_user = true
 
-    return if action_name == "debug"
 
     if cookies[:auth_token] && @current_participant = Participant.find_by_token(cookies[:auth_token])
       return if controller_name == "content" && action_name == "instructions"

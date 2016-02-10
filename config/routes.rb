@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'settings/:name' => 'settings#set'
+
   get 'cases/test', as: :test_case
   get 'cases/answer', as: :answer_case
   get 'cases/tested', as: :tested_case
