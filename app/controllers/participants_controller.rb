@@ -19,7 +19,7 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:age, :web_usage, :gender)
+    params.require(:participant).permit(:age, :web_usage, :gender, :computer_usage)
   end
 
   def profession_params
