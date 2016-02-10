@@ -1,18 +1,20 @@
-$(function() {
+$(function () {
 
-  window.calculateMega = function() {
-   timeTracking();
-   naming();
+  window.calculateMega = function () {
+    timeTracking();
+    naming();
+
+    errorCounting.init($('.track-start, .track-end'));
 
     /*hover Funktion */
 
-     var leaveTimer;
-     $('.layer-1 > li').hover(function(){
+    var leaveTimer;
+    $('.layer-1 > li').hover(function () {
       $currentMega = $(this).children('.mega');
-      $currentMega.css({ 'visibility' : 'visible'});
-     }, function () {
-        $currentMega.css({ 'visibility' : 'hidden'}); 
-     });
+      $currentMega.css({'visibility': 'visible'});
+    }, function () {
+      $currentMega.css({'visibility': 'hidden'});
+    });
 
     /* Berechnung Index of Difficulty */
     // var $liStart = $('.layer-1 > li'); 

@@ -6,6 +6,10 @@ $(function() {
     timeTracking();
     naming();
 
+    errorCounting.init([$('.track-start'),
+      $('.track-end').parent().closest('li'),
+      $('.track-end')]);
+
     /* hover Funktion */
     $('.layer-1 > li').hover(function(){
       currentL2 = $(this).children('ul');

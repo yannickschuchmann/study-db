@@ -29,7 +29,8 @@ function timeTracking() {
     }
     // e.g. http://domain.tld/cases/tested?time=1234&case_sheet=4
     var url = window.location.origin + "/cases/tested?time=" +
-      timeStamps.getResult() + "&case_sheet=" + window.currentCaseSheet;
+      timeStamps.getResult() + "&case_sheet=" + window.currentCaseSheet +
+      "&error_counter=" + window.errorCounting.counter;
 
     window.location.href = url; // redirect to url to send data.
   });

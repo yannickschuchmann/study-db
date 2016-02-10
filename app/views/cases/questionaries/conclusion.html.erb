@@ -29,6 +29,8 @@
         <div class="col-md-4">
           <%= af.label "value_" + c.id.to_s, c.name, class: "radio-inline" do %>
               <%= af.radio_button :value, c.id.to_s %> <%= c.name %>
+              <br><br>
+              <%= image_tag "case-" + c.id.to_s + ".jpg" %>
           <% end %>
         </div>
       <% end %>
