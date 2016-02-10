@@ -14,8 +14,12 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
-
   def force_user_to_journey
+    if @paused_mode = true
+      render "content/pause" # for maintenance
+      return
+    end
+
     @force_user = true
 
     return if action_name == "debug"
