@@ -42,7 +42,7 @@ Question.find_or_create_by(questionary: q2, kind: "comparison", label: "neuartig
 Question.find_or_create_by(questionary: q2, kind: "comparison", label: "handhabbar|widerspenstig")
 Question.find_or_create_by(questionary: q2, kind: "text", label: "Anmerkungen", required: false)
 
-Question.find_or_create_by(questionary: q3, kind: "value", label: "Welche Navigation hat dir am besten gefallen?")
+Question.find_or_create_by(questionary: q3, kind: "value", label: "Welche Navigation hat Dir am besten gefallen?")
 
 settings = Setting.find_by(name: "app")
 if settings.nil?
