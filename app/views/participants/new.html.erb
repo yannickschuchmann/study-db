@@ -62,10 +62,10 @@
                     :job_id, Job.all, :id, :name, {prompt: false}, class: "job form-control") %>
             <br>
             <%= text_field :profession, :additional_other, class: "additional additional-other form-control" %>
-            <%= select :profession, :additional_student, ["MCI", "Informatik", "SSE", "Wirtschaftsinformatik", "ITMC", "Sonstiges"], {},
+            <%= select :profession, :additional_student, ["MCI", "Informatik", "SSE", "Wirtschaftsinformatik", "ITMC", "Sonstiges"], {include_blank: "Bitte wählen"},
                        class: "additional additional-student form-control" %>
             <%= select :profession, :additional_employee, ["Informationstechnik und Telekommunikation", "Wissenschaft und Technik", "Wirtschaft, Finanzen und Marketing", "Verwaltung und Büro", "Kunst und Kultur", "Handwerk und Produktion", "Gesundheit, Sport und Soziales", "Sonstiges" ],
-                {include_blank: "Tätigkeitsbereich"}, class: "additional additional-employee form-control" %>
+                {include_blank: "Bitte wählen"}, class: "additional additional-employee form-control" %>
             <%= profession_f.hidden_field :additional, class: "additional-hidden" %>
         <% end %>
     </div>
