@@ -24,9 +24,6 @@ ActiveRecord::Schema.define(version: 20160211091120) do
     t.integer  "case_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["case_id"], name: "index_answers_on_case_id", using: :btree
-    t.index ["participant_id"], name: "index_answers_on_participant_id", using: :btree
-    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
   end
 
   create_table "cases", force: :cascade do |t|
@@ -60,9 +57,6 @@ ActiveRecord::Schema.define(version: 20160211091120) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "questionary_id"
-    t.index ["case_id"], name: "index_polls_on_case_id", using: :btree
-    t.index ["participant_id"], name: "index_polls_on_participant_id", using: :btree
-    t.index ["questionary_id"], name: "index_polls_on_questionary_id", using: :btree
   end
 
   create_table "professions", force: :cascade do |t|
@@ -90,7 +84,6 @@ ActiveRecord::Schema.define(version: 20160211091120) do
     t.datetime "updated_at",                    null: false
     t.string   "description"
     t.boolean  "required",       default: true
-    t.index ["questionary_id"], name: "index_questions_on_questionary_id", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
@@ -108,8 +101,6 @@ ActiveRecord::Schema.define(version: 20160211091120) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "error_counter",  default: 0
-    t.index ["case_id"], name: "index_trackings_on_case_id", using: :btree
-    t.index ["participant_id"], name: "index_trackings_on_participant_id", using: :btree
   end
 
   add_foreign_key "answers", "cases"
