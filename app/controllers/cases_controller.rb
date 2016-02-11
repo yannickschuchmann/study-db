@@ -120,17 +120,16 @@ class CasesController < ApplicationController
         @case = nil
         return
       end
-
       cases_count = @current_participant.cases.length
+      cases_order = JSON.parse(@current_participant.cases_order)
       if cases_count == 0
-        @case = Case.first
+        @case = Case.all[cases_order[0] - 1]
         return
       end
-
       last_case = @current_participant.trackings.last.case
 
       if (last_case.completed? @current_participant)
-        @case = Case.all[cases_count] # next case
+        @case = Case.all[cases_order[cases_count] - 1] # next case
       else
         @case = last_case
       end

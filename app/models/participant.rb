@@ -42,7 +42,7 @@ class Participant < ApplicationRecord
 
   private
   def generate_cases_order
-
+    self.cases_order = (1..Case.count).to_a.shuffle.to_s
   end
 
   def generate_case_sheets_order
