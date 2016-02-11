@@ -20,7 +20,7 @@ $(function() {
     var $el;
     if (activeOption == "Student") {
       $el = $additionalStudent;
-    } else if (activeOption == "Berufstätiger") {
+    } else if (activeOption == "Berufstätig") {
       $el = $additionalEmployee;
     } else if (activeOption == "Sonstiges") {
       $el = $additionalOther;
