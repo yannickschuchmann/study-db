@@ -4,12 +4,12 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  window.studydb_is_production = <%= Rails.env.production? %>
   <% unless @current_participant.nil? %>
   window.studydb_participant_id = <%= @current_participant.id %>
   ga('create', '<%= Rails.env.production? ? "UA-73198260-2" : "UA-73198260-1" %>', 'auto', {userId: window.studydb_participant_id});
-  window.studydb_is_production = <%= Rails.env.production? %>
   <% else %>
-  ga('create', 'UA-73198260-1', 'auto');
+  ga('create', '<%= Rails.env.production? ? "UA-73198260-2" : "UA-73198260-1" %>', 'auto');
   <% end %>
 
   ga('send', 'pageview');
