@@ -17,6 +17,9 @@ class Participant < ApplicationRecord
 
   accepts_nested_attributes_for :profession
 
+  before_create :generate_cases_order
+  before_create :generate_case_sheets_order
+
   def cases_completed?
     if self.cases.count == Case.count
       all_completed = true
@@ -35,5 +38,14 @@ class Participant < ApplicationRecord
     end
 
     return false
+  end
+
+  private
+  def generate_cases_order
+
+  end
+
+  def generate_case_sheets_order
+    self.sheet_order = (1..Case.sheets).to_a.shuffle.to_s
   end
 end
