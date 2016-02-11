@@ -6,7 +6,7 @@
 
   <% unless @current_participant.nil? %>
   window.studydb_participant_id = <%= @current_participant.id %>
-  ga('create', 'UA-73198260-1', 'auto', {userId: window.studydb_participant_id});
+  ga('create', '<%= Rails.env.production? ? "UA-73198260-2" : "UA-73198260-1" %>', 'auto', {userId: window.studydb_participant_id});
   <% else %>
   ga('create', 'UA-73198260-1', 'auto');
   <% end %>
