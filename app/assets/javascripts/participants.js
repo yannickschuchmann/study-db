@@ -34,7 +34,6 @@ $(function() {
     // set additional
     if ($('.additional-hidden').val() != "") {
       var value = $('.additional-hidden').val();
-      console.debug($('.additional-hidden').val());
       getActiveAdditional().val(value);
     }
 
@@ -48,7 +47,7 @@ $(function() {
       var $el = getActiveAdditional();
       if ($el) {
         if ($el.is('select')) {
-          $('.additional-hidden').val($el.children('option:selected').text());
+          $('.additional-hidden').val($el.children('option:selected').val());
         } else {
           $('.additional-hidden').val($el.val());
         }
