@@ -25,10 +25,14 @@
 	  <%= f.fields_for "[]", answer do |af| %>
 	    <%= af.hidden_field :question_id, value: question.id %>
 
-      <% Case.all.each do |c| %>
+      <% cases = Case.all
+         cases_order = JSON.parse(@current_participant.cases_order)
+      %>
+      <% cases_order.each_with_index do |order, index| %>
+      <% c = cases[order - 1] %>
         <div class="col-md-4">
           <%= af.label "value_" + c.id.to_s, c.name, class: "radio-inline" do %>
-              <%= af.radio_button :value, c.id.to_s %> Navigation <%= c.id %>
+              <%= af.radio_button :value, c.id.to_s %> Navigation <%= index + 1 %>
               <br><br>
               <%= image_tag "case-" + c.id.to_s + ".jpg" %>
           <% end %>
