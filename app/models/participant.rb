@@ -40,6 +40,12 @@ class Participant < ApplicationRecord
     return false
   end
 
+  def self.completed?
+    all.select do |item|
+      item.completed?
+    end
+  end
+
   private
   def generate_cases_order
     self.cases_order = (1..Case.count).to_a.shuffle.to_s

@@ -1,3 +1,14 @@
+<br>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="panel-title">Completed participants</div>
+  </div>
+  <div class="panel-body">
+    <%= completed_length = Participant.completed?.length %> of <%= @participants.length %>
+    (<%= completed_length / @participants.length.to_f * 100 %>%) people completed the study.
+  </div>
+</div>
+
 <table class="table table-bordered table-striped table-hover">
   <thead>
   <tr>
