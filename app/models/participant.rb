@@ -51,6 +51,7 @@ class Participant < ApplicationRecord
 
     time_fields = []
     error_fields = []
+    question_fields = []
     Case.all.each do |c|
       time_fields += (1..Case.sheets).map do |sheet|
         "c#{c.id}_s#{sheet}_time"
@@ -58,9 +59,17 @@ class Participant < ApplicationRecord
       error_fields += (1..Case.sheets).map do |sheet|
         "c#{c.id}_s#{sheet}_error"
       end
+      c.questionaries.each do |questionary|
+        question_fields += questionary.questions.map do |question|
+          "c#{c.id}_#{questionary.name}_#{question.label}"
+        end
+      end
     end
 
-    column_fields += time_fields + error_fields
+    conclusion_question = Questionary.find_by_name("conclusion").questions.first
+    question_fields << conclusion_question.label
+
+    column_fields += time_fields + error_fields + question_fields
 
     trackings = Tracking.all
 
@@ -81,14 +90,24 @@ class Participant < ApplicationRecord
         # cases
         time_fields = []
         error_fields = []
+        question_fields = []
         Case.all.each do |c|
           (1..Case.sheets).map do |sheet|
             t = trackings.where(participant_id: item.id, case_sheet: sheet, case_id: c.id).first
             time_fields.push(t.time)
             error_fields.push(t.error_counter)
+
+          end
+          c.questionaries.each do |questionary|
+            question_fields += questionary.questions.map do |question|
+              answer = question.answers.where(participant_id: item.id, case_id: c.id).first
+              question.kind == 'text' ? answer.text : answer.value
+            end
           end
         end
-        values += time_fields + error_fields
+
+        question_fields << conclusion_question.answers.where(participant_id: item.id).first.value
+        values += time_fields + error_fields + question_fields
 
         csv << values
       end
