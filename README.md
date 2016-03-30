@@ -12,6 +12,7 @@ html navigation models (cases).
 * ~~Google Analytics integration~~
 * ~~Validations~~
 * ~~Layouting and stylings~~
+* ~~CSV Export as async job send by mail~~
 
 ### Todo:
 

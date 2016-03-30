@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'sass-rails'
 gem 'font-awesome-sass'
 
+gem 'delayed_job_active_record'
+
 gem 'rails_12factor', group: :production
 
 gem 'rails-i18n'

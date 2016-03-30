@@ -46,13 +46,21 @@ class Participant < ApplicationRecord
     end
   end
 
-  def self.to_csv
+  def self.furfm mail
+    true
+  end
+
+  def self.as_csv mail
     column_fields = ["age", "gender", "web_usage", "computer_usage"]
+
+    cases = Case.all
+    trackings = Tracking.all
+    answers = Answer.all
 
     time_fields = []
     error_fields = []
     question_fields = []
-    Case.all.each do |c|
+    cases.each do |c|
       time_fields += (1..Case.sheets).map do |sheet|
         "c#{c.id}_s#{sheet}_time"
       end
@@ -71,47 +79,49 @@ class Participant < ApplicationRecord
 
     column_fields += time_fields + error_fields + question_fields
 
-    trackings = Tracking.all
 
-    CSV.generate do |csv|
+    ExportMailer.csv_email(mail, CSV.generate do |csv|
       csv << column_fields
-      self.completed?.each do |item|
-        values = []
+      # self.completed?.each do |item|
+      #   values = []
+      #
+      #   # age
+      #   values << self.ages[item.age]
+      #   # gender
+      #   values << self.genders[item.gender]
+      #   # web_usage
+      #   values << self.web_usages[item.web_usage]
+      #   # computer_usage
+      #   values << self.computer_usages[item.computer_usage]
+      #
+      #   # cases
+      #   time_fields = []
+      #   error_fields = []
+      #   question_fields = []
+      #   cases.each do |c|
+      #     (1..Case.sheets).map do |sheet|
+      #       t = trackings.where(participant_id: item.id, case_sheet: sheet, case_id: c.id).first
+      #       time_fields.push(t.time)
+      #       error_fields.push(t.error_counter)
+      #
+      #     end
+      #     c.questionaries.each do |questionary|
+      #       question_fields += questionary.questions.map do |question|
+      #         answer = answers.where(question_id: question.id, participant_id: item.id, case_id: c.id).first
+      #         question.kind == 'text' ? answer.text : answer.value
+      #       end
+      #     end
+      #   end
+      #
+      #   question_fields << conclusion_question.answers.where(participant_id: item.id).first.value
+      #   values += time_fields + error_fields + question_fields
+      #
+      #   csv << values
+      # end
+    end).deliver_now
 
-        # age
-        values << self.ages[item.age]
-        # gender
-        values << self.genders[item.gender]
-        # web_usage
-        values << self.web_usages[item.web_usage]
-        # computer_usage
-        values << self.computer_usages[item.computer_usage]
 
-        # cases
-        time_fields = []
-        error_fields = []
-        question_fields = []
-        Case.all.each do |c|
-          (1..Case.sheets).map do |sheet|
-            t = trackings.where(participant_id: item.id, case_sheet: sheet, case_id: c.id).first
-            time_fields.push(t.time)
-            error_fields.push(t.error_counter)
 
-          end
-          c.questionaries.each do |questionary|
-            question_fields += questionary.questions.map do |question|
-              answer = question.answers.where(participant_id: item.id, case_id: c.id).first
-              question.kind == 'text' ? answer.text : answer.value
-            end
-          end
-        end
-
-        question_fields << conclusion_question.answers.where(participant_id: item.id).first.value
-        values += time_fields + error_fields + question_fields
-
-        csv << values
-      end
-    end
   end
 
 

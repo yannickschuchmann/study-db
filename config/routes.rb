@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   get 'instructions' => 'content#instructions'
 
   namespace :backend do
-    root to: "participants#index"
+    root to: "participants#index", as: :root
     get 'participants/index'
     get 'participants/:id' => 'participants#show', as: :participant
+    post 'participants/export', as: :export
   end
 end
