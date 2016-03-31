@@ -4,7 +4,7 @@ class Backend::ParticipantsController < Backend::ApplicationController
 
     respond_to do |format|
       format.html
-      # format.csv { send_data Participant.as_csv("yann@asd.de"), filename: "participants-#{Date.today}.csv" }
+      format.csv { send_data Participant.as_csv(false), filename: "participants-#{Date.today}.csv" }
     end
   end
 
