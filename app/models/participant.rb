@@ -71,7 +71,7 @@ class Participant < ApplicationRecord
 
       questionaries.each do |questionary|
         question_fields += questionary.questions.reject {|q| q.label == "Anmerkungen"}.map do |question|
-          "c#{c.id}_#{questionary.name}_#{question.label}"
+          "c#{c.id}_#{questionary.name}_#{question.label}".gsub(" ", "_")
         end
       end
     end
