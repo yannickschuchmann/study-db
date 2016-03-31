@@ -70,7 +70,7 @@ class Participant < ApplicationRecord
       end
 
       questionaries.each do |questionary|
-        question_fields += questionary.questions.map do |question|
+        question_fields += questionary.questions.reject {|q| q.label == "Anmerkungen"}.map do |question|
           "c#{c.id}_#{questionary.name}_#{question.label}"
         end
       end
@@ -108,7 +108,7 @@ class Participant < ApplicationRecord
 
           end
           questionaries.each do |questionary|
-            question_fields += questionary.questions.map do |question|
+            question_fields += questionary.questions.reject {|q| q.label == "Anmerkungen"}.map do |question|
               answer = answers.where(question_id: question.id, participant_id: item.id, case_id: c.id).first
               question.kind == 'text' ? answer.text.gsub('\n', '') : answer.value
             end
