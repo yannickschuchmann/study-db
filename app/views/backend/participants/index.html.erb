@@ -28,6 +28,12 @@
       </div>
     <% end %>
     </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <%= link_to "Export comments", backend_export_comments_path(format: :csv), class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 </div>
 
